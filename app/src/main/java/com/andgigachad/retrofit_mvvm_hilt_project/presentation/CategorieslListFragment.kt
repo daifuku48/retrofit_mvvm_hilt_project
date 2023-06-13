@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentAllFruitsBinding
 
-class FruitListFragment : Fragment() {
+class CategorieslListFragment : Fragment() {
 
     private var _binding : FragmentAllFruitsBinding? = null
     private val binding
