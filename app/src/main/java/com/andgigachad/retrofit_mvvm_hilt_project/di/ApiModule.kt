@@ -1,6 +1,7 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.di
 
 import com.andgigachad.retrofit_mvvm_hilt_project.data.remote.MealsApi
+import com.andgigachad.retrofit_mvvm_hilt_project.network.RetrofitService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,13 +37,13 @@ object ApiModule {
     fun providesRetrofit(client: OkHttpClient) : Retrofit{
         return Retrofit.Builder()
             .client(client)
-            .baseUrl(MealsApi.BASE_URL)
+            .baseUrl(RetrofitService.BASE_URL)
             .build()
     }
 
     @Provides
     @Singleton
-    fun providesApiMeals(retrofit: Retrofit) : MealsApi {
-        return retrofit.create(MealsApi::class.java)
+    fun providesApiMeals(retrofit: Retrofit) : RetrofitService {
+        return retrofit.create(RetrofitService::class.java)
     }
 }

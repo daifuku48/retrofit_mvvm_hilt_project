@@ -2,7 +2,7 @@ package com.andgigachad.retrofit_mvvm_hilt_project.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Categories(
+data class CategoriesNetwork(
     @SerializedName("categories")
-    private var categories: List<Category>
+    var categories: List<Category>
     )
