@@ -6,7 +6,7 @@
     app:startDestination="@id/categorieslListFragment">
     <fragment
         android:id="@+id/categorieslListFragment"
-        android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.CategorieslListFragment"
+        android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.CategorieslListFragment"
         android:label="fragment_categories_list"
         tools:layout="@layout/fragment_categories_list" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/mealsByCategoriesFragment"
-        android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.MealsByCategoriesFragment"
+        android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.MealsByCategoriesFragment"
         android:label="fragment_meal_by_categories"
         tools:layout="@layout/fragment_meal_by_categories" />
 </navigation>

@@ -23,7 +23,6 @@ object ApiModule {
             .setLevel(HttpLoggingInterceptor.Level.BASIC)
     }
 
-
     @Provides
     @Singleton
     fun providesHttpClient(interceptor: HttpLoggingInterceptor) : OkHttpClient {
