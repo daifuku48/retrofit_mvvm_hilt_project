@@ -8,6 +8,6 @@ interface RetrofitService {
     @GET("/categories.php")
     fun getAllCategoriesOfMeal() : Response<CategoriesNetwork>
     companion object{
-        const val BASE_URL = "www.themealdb.com/api/json/v1/1/"
+        const val BASE_URL = "http://www.themealdb.com/api/json/v1/1/"
     }
 }
