@@ -7,12 +7,17 @@ import com.andgigachad.retrofit_mvvm_hilt_project.network.mappers.CategoriesMapp
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(Singleton::class)
+@InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
+    @Provides
+    fun provideCategoriesMapper(): CategoriesMapper {
+        return CategoriesMapper()
+    }
     @Singleton
     @Provides
     fun provideFavoriteMealRepository(
