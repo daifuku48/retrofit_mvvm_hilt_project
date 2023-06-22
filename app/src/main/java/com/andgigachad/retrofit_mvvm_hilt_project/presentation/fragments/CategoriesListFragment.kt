@@ -1,12 +1,21 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentCategoriesListBinding
+import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.CategoriesDomain
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.RecyclerCategoriesAdapter
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.CategoriesListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -34,6 +43,15 @@ class CategoriesListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val layoutManager = LinearLayoutManager(requireContext())
+        binding?.fruitListRecyclerView?.layoutManager = layoutManager
 
+        vm.loading.observe(viewLifecycleOwner) {
+            if (it)
+            {
+                binding?.progressBar?.visibility = View.GONE
+                binding?.fruitListRecyclerView?.visibility = View.VISIBLE
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@ import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.CategoriesDomain
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.repository.FavoriteMealRepository
 import com.andgigachad.retrofit_mvvm_hilt_project.network.RetrofitService
 import com.andgigachad.retrofit_mvvm_hilt_project.network.mappers.CategoriesMapper
+import com.andgigachad.retrofit_mvvm_hilt_project.network.model.CategoriesNetwork
 
 class FavoriteMealRepositoryImpl(
     private val recipeService: RetrofitService,

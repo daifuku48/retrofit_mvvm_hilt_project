@@ -16,8 +16,7 @@ object DomainModule {
     @Provides
     fun provideGetAllCategoriesMealUseCase(favoriteMealRepository: FavoriteMealRepository) : GetAllCategoriesMealUseCase{
         return GetAllCategoriesMealUseCase(
-            favoriteMealRepository = favoriteMealRepository,
-            mapper = CategoriesMapper()
+            favoriteMealRepository = favoriteMealRepository
         )
     }
 }
