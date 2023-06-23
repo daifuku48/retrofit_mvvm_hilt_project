@@ -46,9 +46,6 @@ class CategoriesListViewModel @Inject constructor(
 
                 val domainResult = getAllCategoriesMealUseCase.execute()
                 _categoriesList.value = domainResult
-
-                Log.d("error", "Categories List is Error")
-
                 loading.value = false
 
         }

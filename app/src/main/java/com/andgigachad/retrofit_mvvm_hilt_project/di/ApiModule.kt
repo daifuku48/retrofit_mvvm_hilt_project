@@ -20,7 +20,7 @@ object ApiModule {
     @Singleton
     fun providesHttpInterceptor() : HttpLoggingInterceptor{
         return HttpLoggingInterceptor()
-            .setLevel(HttpLoggingInterceptor.Level.BASIC)
+            .setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 
     @Provides

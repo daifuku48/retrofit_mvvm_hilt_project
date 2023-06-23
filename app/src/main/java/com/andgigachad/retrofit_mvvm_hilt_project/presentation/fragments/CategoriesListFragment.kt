@@ -44,14 +44,23 @@ class CategoriesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val layoutManager = LinearLayoutManager(requireContext())
-        binding?.fruitListRecyclerView?.layoutManager = layoutManager
+        binding?.categoriesRecyclerView?.layoutManager = layoutManager
 
         vm.loading.observe(viewLifecycleOwner) {
             if (it)
             {
                 binding?.progressBar?.visibility = View.GONE
-                binding?.fruitListRecyclerView?.visibility = View.VISIBLE
+                binding?.categoriesRecyclerView?.visibility = View.VISIBLE
             }
         }
+
+
+        vm.categoriesList.observe(viewLifecycleOwner){ items->
+
+            val adapter = RecyclerCategoriesAdapter(items)
+            binding?.categoriesRecyclerView?.adapter = adapter
+        }
+
+
     }
 }

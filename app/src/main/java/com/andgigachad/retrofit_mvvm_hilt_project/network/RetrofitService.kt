@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface RetrofitService {
     @GET("categories.php")
-    fun getAllCategoriesOfMeal() : CategoriesNetwork
+    suspend fun getAllCategoriesOfMeal() : CategoriesNetwork
     companion object{
         const val BASE_URL = "https://www.themealdb.com/api/json/v1/1/"
     }

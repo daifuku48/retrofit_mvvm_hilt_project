@@ -37,6 +37,7 @@ class RecyclerCategoriesAdapter(private val dataList: CategoriesDomain) : Recycl
         Glide.with(holder.itemView.context)
             .load(dataList.categories[position]
                 .strCategoryThumb)
+            .skipMemoryCache(true)
             .into(holder.recipeImage)
         holder.recipeName.text = dataList.categories[position].strCategory
         holder.recipeDetail.text = dataList.categories[position].strCategoryDescription
