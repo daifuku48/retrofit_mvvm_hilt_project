@@ -9,9 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.CategoriesDomain
+import com.andgigachad.retrofit_mvvm_hilt_project.network.model.Category
 import com.bumptech.glide.Glide
 
-class RecyclerCategoriesAdapter(private val dataList: CategoriesDomain) : RecyclerView.Adapter<RecyclerCategoriesAdapter.ViewHolder>()  {
+class RecyclerCategoriesAdapter(private val dataList: List<Category>) : RecyclerView.Adapter<RecyclerCategoriesAdapter.ViewHolder>()  {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var recipeImage : ImageView
@@ -31,16 +32,16 @@ class RecyclerCategoriesAdapter(private val dataList: CategoriesDomain) : Recycl
         return ViewHolder(view)
     }
 
-    override fun getItemCount() = dataList.categories.size
+    override fun getItemCount() = dataList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
-            .load(dataList.categories[position]
+            .load(dataList[position]
                 .strCategoryThumb)
             .skipMemoryCache(true)
             .into(holder.recipeImage)
-        holder.recipeName.text = dataList.categories[position].strCategory
-        holder.recipeDetail.text = dataList.categories[position].strCategoryDescription
+        holder.recipeName.text = dataList[position].strCategory
+        holder.recipeDetail.text = dataList[position].strCategoryDescription
     }
 
 }

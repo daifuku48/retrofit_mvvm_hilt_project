@@ -2,6 +2,7 @@ package com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments
 
 import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,8 +57,11 @@ class CategoriesListFragment : Fragment() {
 
 
         vm.categoriesList.observe(viewLifecycleOwner){ items->
-
             val adapter = RecyclerCategoriesAdapter(items)
+            for(i in items)
+            {
+                Log.d("items", i.strCategory)
+            }
             binding?.categoriesRecyclerView?.adapter = adapter
         }
 

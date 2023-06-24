@@ -10,6 +10,7 @@ import com.andgigachad.retrofit_mvvm_hilt_project.domain.GetAllCategoriesMealUse
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.CategoriesDomain
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.repository.FavoriteMealRepository
 import com.andgigachad.retrofit_mvvm_hilt_project.network.mappers.CategoriesMapper
+import com.andgigachad.retrofit_mvvm_hilt_project.network.model.Category
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,8 +30,8 @@ class CategoriesListViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private var _categoriesList = MutableLiveData<CategoriesDomain>()
-    var categoriesList: LiveData<CategoriesDomain> = _categoriesList
+    private var _categoriesList = MutableLiveData<List<Category>>()
+    var categoriesList: LiveData<List<Category>> = _categoriesList
 
     var loading = MutableLiveData(false)
     var recipeScrollPosition = 0
@@ -40,13 +41,12 @@ class CategoriesListViewModel @Inject constructor(
     }
 
     private fun fetchData() {
-        loading.value = true
 
         viewModelScope.launch {
-
-                val domainResult = getAllCategoriesMealUseCase.execute()
+                delay(1000L)
+                val domainResult = getAllCategoriesMealUseCase.execute().categories
                 _categoriesList.value = domainResult
-                loading.value = false
+                loading.value = true
 
         }
     }
