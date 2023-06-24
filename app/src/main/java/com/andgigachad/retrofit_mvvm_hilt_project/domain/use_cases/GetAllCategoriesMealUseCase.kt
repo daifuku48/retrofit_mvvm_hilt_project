@@ -1,4 +1,4 @@
-package com.andgigachad.retrofit_mvvm_hilt_project.domain
+package com.andgigachad.retrofit_mvvm_hilt_project.domain.use_cases
 
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.CategoriesDomain
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.repository.FavoriteMealRepository

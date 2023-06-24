@@ -14,7 +14,9 @@ import com.bumptech.glide.Glide
 
 class RecyclerCategoriesAdapter(private val dataList: List<Category>) : RecyclerView.Adapter<RecyclerCategoriesAdapter.ViewHolder>()  {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    var onItemClick: ((Category) -> Unit)? = null
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var recipeImage : ImageView
         var recipeName : TextView
         var recipeDetail : TextView
@@ -22,6 +24,9 @@ class RecyclerCategoriesAdapter(private val dataList: List<Category>) : Recycler
             recipeImage = itemView.findViewById(R.id.recipeImage)
             recipeName = itemView.findViewById(R.id.recipeName)
             recipeDetail = itemView.findViewById(R.id.recipeDetail)
+            itemView.setOnClickListener {
+                onItemClick?.invoke(dataList[adapterPosition])
+            }
         }
     }
 

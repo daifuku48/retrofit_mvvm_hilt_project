@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -58,12 +59,16 @@ class CategoriesListFragment : Fragment() {
 
         vm.categoriesList.observe(viewLifecycleOwner){ items->
             val adapter = RecyclerCategoriesAdapter(items)
+            adapter.onItemClick = {
+                Toast.makeText(requireContext(), it.strCategory, Toast.LENGTH_LONG).show()
+            }
             for(i in items)
             {
                 Log.d("items", i.strCategory)
             }
             binding?.categoriesRecyclerView?.adapter = adapter
         }
+
 
 
     }
