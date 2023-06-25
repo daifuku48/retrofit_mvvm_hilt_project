@@ -1,6 +1,5 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.presentation.components
 
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.andgigachad.retrofit_mvvm_hilt_project.R
-import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.CategoriesDomain
 import com.andgigachad.retrofit_mvvm_hilt_project.network.model.Category
 import com.bumptech.glide.Glide
 

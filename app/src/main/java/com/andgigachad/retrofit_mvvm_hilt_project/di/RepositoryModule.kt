@@ -4,6 +4,7 @@ import com.andgigachad.retrofit_mvvm_hilt_project.data.repository.FavoriteMealRe
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.repository.FavoriteMealRepository
 import com.andgigachad.retrofit_mvvm_hilt_project.network.RetrofitService
 import com.andgigachad.retrofit_mvvm_hilt_project.network.mappers.CategoriesMapper
+import com.andgigachad.retrofit_mvvm_hilt_project.network.mappers.MealsMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,14 +19,23 @@ object RepositoryModule {
     fun provideCategoriesMapper(): CategoriesMapper {
         return CategoriesMapper()
     }
+
+    @Provides
+    fun providesMealsMapper() : MealsMapper {
+        return MealsMapper()
+    }
+
     @Singleton
     @Provides
     fun provideFavoriteMealRepository(
         recipeService: RetrofitService,
-        mapper: CategoriesMapper
+        mapperCategories: CategoriesMapper,
+        mapperMeals: MealsMapper
     ) : FavoriteMealRepository {
         return FavoriteMealRepositoryImpl(
             recipeService = recipeService,
-            mapper = mapper)
+            categoriesMapper = mapperCategories,
+            mealsMapper = mapperMeals
+        )
     }
 }

@@ -32,12 +32,10 @@ class CategoriesListViewModel @Inject constructor(
     private fun fetchData() {
 
         viewModelScope.launch {
-                delay(1000L)
-                val domainResult = getAllCategoriesMealUseCase.execute().categories
-                _categoriesList.value = domainResult
-                loading.value = true
+            delay(1000L)
+            val domainResult = getAllCategoriesMealUseCase.execute().categories
+            _categoriesList.value = domainResult
+            loading.value = true
         }
     }
-
-
 }

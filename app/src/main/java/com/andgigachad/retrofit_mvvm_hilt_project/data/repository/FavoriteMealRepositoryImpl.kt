@@ -19,7 +19,7 @@ class FavoriteMealRepositoryImpl(
         return categoriesMapper.mapToDomainModel(recipeService.getAllCategoriesOfMeal())
     }
 
-    override suspend fun getAllMealsByCategories(): MealsDomain {
-        return mealsMapper.mapToDomainModel(recipeService.)
+    override suspend fun getAllMealsByCategories(category: String): MealsDomain {
+        return mealsMapper.mapToDomainModel(recipeService.getAllMealsByCategory(category))
     }
 }

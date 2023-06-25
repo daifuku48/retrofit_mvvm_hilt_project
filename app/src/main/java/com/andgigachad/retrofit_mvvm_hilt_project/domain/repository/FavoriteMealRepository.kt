@@ -7,5 +7,5 @@ import retrofit2.Call
 
 interface FavoriteMealRepository {
     suspend fun getAllCategories() : CategoriesDomain
-    suspend fun getAllMealsByCategories() : MealsDomain
+    suspend fun getAllMealsByCategories(category: String) : MealsDomain
 }

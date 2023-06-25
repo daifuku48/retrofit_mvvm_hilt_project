@@ -4,13 +4,14 @@ import com.andgigachad.retrofit_mvvm_hilt_project.network.model.CategoriesNetwor
 import com.andgigachad.retrofit_mvvm_hilt_project.network.model.MealsNetwork
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface RetrofitService {
     @GET("categories.php")
     suspend fun getAllCategoriesOfMeal() : CategoriesNetwork
 
-    @GET("categp")
-    suspend fun getAllMealsByCategory() : MealsNetwork
+    @GET("filter.php")
+    suspend fun getAllMealsByCategory(@Query("с") category: String) : MealsNetwork
 
     companion object{
         const val BASE_URL = "https://www.themealdb.com/api/json/v1/1/"
