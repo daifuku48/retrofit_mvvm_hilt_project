@@ -61,8 +61,5 @@ class CategoriesListFragment : Fragment() {
             }
             binding?.categoriesRecyclerView?.adapter = adapter
         }
-
-
-
     }
 }

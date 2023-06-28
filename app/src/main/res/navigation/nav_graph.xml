@@ -17,5 +17,10 @@
         android:id="@+id/mealsByCategoriesFragment"
         android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.MealsByCategoriesFragment"
         android:label="fragment_meal_by_categories"
-        tools:layout="@layout/fragment_meal_by_categories" />
+        tools:layout="@layout/fragment_meal_by_categories" >
+    <argument
+        android:name="category_name"
+        app:argType="string"
+        android:defaultValue="Beef"/>
+    </fragment>
 </navigation>

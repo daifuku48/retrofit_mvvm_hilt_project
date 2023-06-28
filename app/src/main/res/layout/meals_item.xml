@@ -11,7 +11,7 @@
         android:background="@drawable/list_category_background">
 
         <ImageView
-            android:id = "@+id/recipeImage"
+            android:id = "@+id/mealsImage"
             android:layout_width="70dp"
             android:layout_height="70dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -20,32 +20,15 @@
             android:layout_marginStart="30dp"/>
 
         <TextView
-            android:id = "@+id/recipeName"
+            android:id = "@+id/mealsName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/recipeImage"
+            app:layout_constraintStart_toEndOf="@id/mealsImage"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:layout_marginStart="20dp"
             android:textSize="20sp"
-            android:text = "@string/category"
-            />
-
-        <TextView
-            android:id="@+id/recipeDetail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@string/detail"
-            android:textColor="@color/blue"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/recipeImage"
-            app:layout_constraintTop_toBottomOf="@id/recipeName" />
+            android:text = "@string/meal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

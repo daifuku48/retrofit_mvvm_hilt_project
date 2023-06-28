@@ -4,4 +4,5 @@
     <string name="detail">Detail</string>
     <string name="categotytext">CategotyText</string>
     <string name="categorymeal">CategoryMeal</string>
+    <string name="meal">Meal</string>
 </resources>

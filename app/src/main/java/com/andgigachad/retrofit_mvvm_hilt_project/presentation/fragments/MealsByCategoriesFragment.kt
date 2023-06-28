@@ -32,7 +32,14 @@ class MealsByCategoriesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        vm.loading.observe(viewLifecycleOwner){
+            if (it)
+            {
+                binding?.categoryLayout?.visibility = View.VISIBLE
+                binding?.mealsRecyclerView?.visibility = View.VISIBLE
+                binding?.progressBar?.visibility = View.GONE
+            }
+        }
 
     }
 }
