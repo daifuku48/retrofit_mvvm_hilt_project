@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentMealByCategoriesBinding
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.RecyclerMealsAdapter
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MealByCategoriesListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -21,6 +24,8 @@ class MealsByCategoriesFragment : Fragment() {
 
     private val vm : MealByCategoriesListViewModel by viewModels()
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,6 +37,9 @@ class MealsByCategoriesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val layoutManager = GridLayoutManager(requireContext(), 2, LinearLayoutManager.VERTICAL, false)
+        binding?.mealsRecyclerView?.layoutManager = layoutManager
+
         vm.loading.observe(viewLifecycleOwner){
             if (it)
             {
@@ -39,6 +47,12 @@ class MealsByCategoriesFragment : Fragment() {
                 binding?.mealsRecyclerView?.visibility = View.VISIBLE
                 binding?.progressBar?.visibility = View.GONE
             }
+        }
+
+
+        vm.mealsList.observe(viewLifecycleOwner){ items ->
+            val adapter = RecyclerMealsAdapter(items)
+            binding?.mealsRecyclerView?.adapter = adapter
         }
 
     }

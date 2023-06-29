@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentCategoriesListBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.RecyclerCategoriesAdapter
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.CategoriesListViewModel
@@ -19,6 +21,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class CategoriesListFragment : Fragment() {
+    //init navController
+    private val navController by lazy { findNavController() }
 
     private var _binding : FragmentCategoriesListBinding? = null
 
@@ -41,6 +45,7 @@ class CategoriesListFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireContext())
         binding?.categoriesRecyclerView?.layoutManager = layoutManager
 
+        //making loading
         vm.loading.observe(viewLifecycleOwner) {
             if (it)
             {
@@ -49,15 +54,15 @@ class CategoriesListFragment : Fragment() {
             }
         }
 
-
+        //init recyclerView
         vm.categoriesList.observe(viewLifecycleOwner){ items->
             val adapter = RecyclerCategoriesAdapter(items)
-            adapter.onItemClick = {
-                Toast.makeText(requireContext(), it.strCategory, Toast.LENGTH_LONG).show()
-            }
-            for(i in items)
-            {
-                Log.d("items", i.strCategory)
+            adapter.onItemClick = { category ->
+                val action = CategoriesListFragmentDirections
+                    .actionCategorieslListFragmentToMealsByCategoriesFragment(
+                        categoryName = category.strCategory
+                    )
+                navController.navigate(action)
             }
             binding?.categoriesRecyclerView?.adapter = adapter
         }
