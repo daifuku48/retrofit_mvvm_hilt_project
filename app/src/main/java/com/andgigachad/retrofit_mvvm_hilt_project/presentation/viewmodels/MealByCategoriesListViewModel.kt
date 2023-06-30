@@ -17,7 +17,6 @@ class MealByCategoriesListViewModel @Inject constructor(
 ) : ViewModel() {
     private var _mealsList = MutableLiveData<List<Meal>>()
     val mealsList: LiveData<List<Meal>> = _mealsList
-    val args:  by navArgs()
     private val category: String = savedStateHandle.get<String>("category") ?: "Beef"
     var loading = MutableLiveData(false)
     init {

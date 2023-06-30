@@ -24,8 +24,6 @@ class MealsByCategoriesFragment : Fragment() {
 
     private val vm : MealByCategoriesListViewModel by viewModels()
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

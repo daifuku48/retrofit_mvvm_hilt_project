@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentCategoriesListBinding
@@ -27,6 +28,7 @@ class CategoriesListFragment : Fragment() {
     private var _binding : FragmentCategoriesListBinding? = null
 
     private val vm : CategoriesListViewModel by viewModels()
+    //private val vm: CategoriesListViewModel by navGraphViewModels(R.navigation.nav_graph)
     private val binding
         get() = _binding
 
