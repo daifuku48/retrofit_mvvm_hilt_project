@@ -15,6 +15,7 @@ import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentCategoriesListBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.RecyclerCategoriesAdapter
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.CategoriesListViewModel
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -27,8 +28,8 @@ class CategoriesListFragment : Fragment() {
 
     private var _binding : FragmentCategoriesListBinding? = null
 
+    private val sharedVM : SharedViewModel by viewModels()
     private val vm : CategoriesListViewModel by viewModels()
-    //private val vm: CategoriesListViewModel by navGraphViewModels(R.navigation.nav_graph)
     private val binding
         get() = _binding
 
@@ -61,9 +62,9 @@ class CategoriesListFragment : Fragment() {
             val adapter = RecyclerCategoriesAdapter(items)
             adapter.onItemClick = { category ->
                 val action = CategoriesListFragmentDirections
-                    .actionCategorieslListFragmentToMealsByCategoriesFragment(
-                        categoryName = category.strCategory
-                    )
+                    .actionCategorieslListFragmentToMealsByCategoriesFragment()
+                sharedVM.setCategoryName(category.strCategory)
+                sharedVM.setCategoryImage(category.strCategoryThumb)
                 navController.navigate(action)
             }
             binding?.categoriesRecyclerView?.adapter = adapter

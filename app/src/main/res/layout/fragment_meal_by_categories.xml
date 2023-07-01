@@ -29,6 +29,7 @@
             android:contentDescription="@string/categorymeal" />
 
         <TextView
+            android:id = "@+id/categoryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"

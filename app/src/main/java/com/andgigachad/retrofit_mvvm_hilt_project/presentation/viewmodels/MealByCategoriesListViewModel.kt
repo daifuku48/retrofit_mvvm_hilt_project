@@ -17,13 +17,8 @@ class MealByCategoriesListViewModel @Inject constructor(
 ) : ViewModel() {
     private var _mealsList = MutableLiveData<List<Meal>>()
     val mealsList: LiveData<List<Meal>> = _mealsList
-    private val category: String = savedStateHandle.get<String>("category") ?: "Beef"
     var loading = MutableLiveData(false)
-    init {
-        fetchData()
-    }
-
-    private fun fetchData() {
+    fun fetchData(category: String) {
         viewModelScope.launch {
             delay(1000L)
             val domainResult = getAllMealsByCategoriesUseCase.execute(category = category).meals

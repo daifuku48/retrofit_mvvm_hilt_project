@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentMealByCategoriesBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.RecyclerMealsAdapter
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MealByCategoriesListViewModel
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.SharedViewModel
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -23,7 +25,7 @@ class MealsByCategoriesFragment : Fragment() {
         get() = _binding
 
     private val vm : MealByCategoriesListViewModel by viewModels()
-
+    private val sharedVM : SharedViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,6 +40,21 @@ class MealsByCategoriesFragment : Fragment() {
         val layoutManager = GridLayoutManager(requireContext(), 2, LinearLayoutManager.VERTICAL, false)
         binding?.mealsRecyclerView?.layoutManager = layoutManager
 
+        sharedVM.categoryName.observe(viewLifecycleOwner){ categoryName ->
+            if (categoryName != null)
+            {
+                binding?.categoryName?.text = categoryName
+                vm.fetchData(categoryName)
+            }
+        }
+
+        sharedVM.categoryImage.observe(viewLifecycleOwner){ categoryImage ->
+            Glide.with(requireContext())
+                .load(categoryImage)
+                .skipMemoryCache(true)
+                .into(binding?.categoryImage!!)
+        }
+
         vm.loading.observe(viewLifecycleOwner){
             if (it)
             {
@@ -46,7 +63,6 @@ class MealsByCategoriesFragment : Fragment() {
                 binding?.progressBar?.visibility = View.GONE
             }
         }
-
 
         vm.mealsList.observe(viewLifecycleOwner){ items ->
             val adapter = RecyclerMealsAdapter(items)
