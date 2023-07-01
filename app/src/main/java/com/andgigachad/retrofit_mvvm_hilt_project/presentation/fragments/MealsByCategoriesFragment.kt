@@ -40,11 +40,11 @@ class MealsByCategoriesFragment : Fragment() {
         val layoutManager = GridLayoutManager(requireContext(), 2, LinearLayoutManager.VERTICAL, false)
         binding?.mealsRecyclerView?.layoutManager = layoutManager
 
-        sharedVM.categoryName.observe(viewLifecycleOwner){ categoryName ->
+        sharedVM.getCategoryName().observe(viewLifecycleOwner){ categoryName ->
             if (categoryName != null)
             {
-                binding?.categoryName?.text = categoryName
                 vm.fetchData(categoryName)
+                binding?.categoryName?.text = categoryName
             }
         }
 
