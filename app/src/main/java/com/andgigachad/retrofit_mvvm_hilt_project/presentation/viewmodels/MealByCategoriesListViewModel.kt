@@ -23,11 +23,14 @@ class MealByCategoriesListViewModel @Inject constructor(
     private var _mealsList = MutableLiveData<List<Meal>>()
     val mealsList: LiveData<List<Meal>> = _mealsList
     var loading = MutableLiveData(false)
+
+    init{
+        fetchData("Beef")    }
     fun fetchData(category: String) {
         viewModelScope.launch {
             delay(1000L)
             Log.d("category", category)
-            val domainResult = getAllMealsByCategoriesUseCase.execute(category = category).meals
+            val domainResult = getAllMealsByCategoriesUseCase.execute(category = "Beef").meals
             _mealsList.value = domainResult
             loading.value = true
         }

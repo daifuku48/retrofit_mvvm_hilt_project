@@ -12,8 +12,8 @@ import javax.inject.Inject
 class SharedViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    var categoryName = MutableLiveData<String>()
-    var categoryImage = MutableLiveData<String>()
+    private val categoryName = MutableLiveData<String>()
+    private val categoryImage = MutableLiveData<String>()
     fun setCategoryName(str: String) {
         categoryName.value = str
     }

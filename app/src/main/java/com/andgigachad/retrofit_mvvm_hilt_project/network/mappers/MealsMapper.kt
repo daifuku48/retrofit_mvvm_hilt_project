@@ -12,6 +12,8 @@ class MealsMapper : MealsDomainMapper<MealsNetwork, MealsDomain> {
     }
 
     override fun mapToNetworkModel(domainModel: MealsDomain): MealsNetwork {
-        TODO("Not yet implemented")
+        return MealsNetwork(
+            domainModel.meals
+        )
     }
 }

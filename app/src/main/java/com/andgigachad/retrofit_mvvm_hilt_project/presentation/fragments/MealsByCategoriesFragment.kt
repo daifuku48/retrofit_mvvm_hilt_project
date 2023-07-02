@@ -48,11 +48,16 @@ class MealsByCategoriesFragment : Fragment() {
             }
         }
 
-        sharedVM.categoryImage.observe(viewLifecycleOwner){ categoryImage ->
-            Glide.with(requireContext())
-                .load(categoryImage)
-                .skipMemoryCache(true)
-                .into(binding?.categoryImage!!)
+        sharedVM.getCategoryImage().observe(viewLifecycleOwner){ categoryImage ->
+            if (categoryImage != null)
+            {
+                binding?.categoryImage?.let {
+                    Glide.with(requireContext())
+                        .load(categoryImage)
+                        .skipMemoryCache(true)
+                        .into(it)
+                }
+            }
         }
 
         vm.loading.observe(viewLifecycleOwner){

@@ -61,6 +61,7 @@ class CategoriesListFragment : Fragment() {
         vm.categoriesList.observe(viewLifecycleOwner){ items->
             val adapter = RecyclerCategoriesAdapter(items)
             adapter.onItemClick = { category ->
+                Log.d("Category", category.strCategory)
                 val action = CategoriesListFragmentDirections
                     .actionCategorieslListFragmentToMealsByCategoriesFragment()
                 sharedVM.setCategoryName(category.strCategory)
