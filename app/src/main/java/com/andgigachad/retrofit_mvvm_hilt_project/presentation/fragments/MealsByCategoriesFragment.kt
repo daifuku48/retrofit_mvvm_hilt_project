@@ -1,10 +1,12 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,7 +27,7 @@ class MealsByCategoriesFragment : Fragment() {
         get() = _binding
 
     private val vm : MealByCategoriesListViewModel by viewModels()
-    private val sharedVM : SharedViewModel by viewModels()
+    private val sharedVM : SharedViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,6 +45,7 @@ class MealsByCategoriesFragment : Fragment() {
         sharedVM.getCategoryName().observe(viewLifecycleOwner){ categoryName ->
             if (categoryName != null)
             {
+                Log.d("category", categoryName)
                 vm.fetchData(categoryName)
                 binding?.categoryName?.text = categoryName
             }

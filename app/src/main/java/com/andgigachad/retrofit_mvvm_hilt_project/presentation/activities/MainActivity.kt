@@ -13,7 +13,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private var _binding : ActivityMainBinding? = null
-    private val sharedVM : SharedViewModel by viewModels()
     private val binding
         get() = _binding
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
@@ -28,8 +29,8 @@ class CategoriesListFragment : Fragment() {
 
     private var _binding : FragmentCategoriesListBinding? = null
 
-    private val sharedVM : SharedViewModel by viewModels()
     private val vm : CategoriesListViewModel by viewModels()
+    private val sharedVM : SharedViewModel by activityViewModels()
     private val binding
         get() = _binding
 

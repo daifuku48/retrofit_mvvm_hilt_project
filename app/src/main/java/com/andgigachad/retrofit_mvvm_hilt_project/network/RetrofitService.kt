@@ -11,7 +11,7 @@ interface RetrofitService {
     suspend fun getAllCategoriesOfMeal() : CategoriesNetwork
 
     @GET("filter.php")
-    suspend fun getAllMealsByCategory(@Query("с") category: String) : MealsNetwork
+    suspend fun getAllMealsByCategory(@Query("c") category: String) : MealsNetwork
 
     companion object{
         const val BASE_URL = "https://www.themealdb.com/api/json/v1/1/"

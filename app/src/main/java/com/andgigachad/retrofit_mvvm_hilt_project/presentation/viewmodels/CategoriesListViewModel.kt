@@ -23,9 +23,9 @@ class CategoriesListViewModel @Inject constructor(
 
     private var _categoriesList = MutableLiveData<List<Category>>()
     var categoriesList: LiveData<List<Category>> = _categoriesList
-
     var loading = MutableLiveData(false)
-    init {
+
+    init{
         fetchData()
     }
 
