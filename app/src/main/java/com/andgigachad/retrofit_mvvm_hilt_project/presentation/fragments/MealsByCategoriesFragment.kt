@@ -45,7 +45,6 @@ class MealsByCategoriesFragment : Fragment() {
         sharedVM.getCategoryName().observe(viewLifecycleOwner){ categoryName ->
             if (categoryName != null)
             {
-                Log.d("category", categoryName)
                 vm.fetchData(categoryName)
                 binding?.categoryName?.text = categoryName
             }
@@ -54,12 +53,11 @@ class MealsByCategoriesFragment : Fragment() {
         sharedVM.getCategoryImage().observe(viewLifecycleOwner){ categoryImage ->
             if (categoryImage != null)
             {
-                binding?.categoryImage?.let {
-                    Glide.with(requireContext())
-                        .load(categoryImage)
-                        .skipMemoryCache(true)
-                        .into(it)
-                }
+                Log.d("Category Image", categoryImage)
+                Glide.with(requireContext())
+                    .load(categoryImage)
+                    .skipMemoryCache(true)
+                    .into(binding?.categoryImage!!)
             }
         }
 

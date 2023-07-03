@@ -27,6 +27,6 @@ class SharedViewModel @Inject constructor(
     }
 
     fun getCategoryImage(): LiveData<String> {
-        return categoryName
+        return categoryImage
     }
 }
