@@ -46,7 +46,7 @@ class MealsByCategoriesFragment : Fragment() {
             if (categoryName != null)
             {
                 vm.fetchData(categoryName)
-                binding?.categoryName?.text = categoryName
+                binding?.categoryLayout?.title = categoryName
             }
         }
 
