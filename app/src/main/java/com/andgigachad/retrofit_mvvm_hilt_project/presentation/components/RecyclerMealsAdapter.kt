@@ -1,6 +1,5 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.presentation.components
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,13 +7,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.andgigachad.retrofit_mvvm_hilt_project.R
-import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.MealsDomain
+import com.andgigachad.retrofit_mvvm_hilt_project.network.model.Category
 import com.andgigachad.retrofit_mvvm_hilt_project.network.model.Meal
 import com.bumptech.glide.Glide
 
 class RecyclerMealsAdapter(private val dataSet : List<Meal>) :
     RecyclerView.Adapter<RecyclerMealsAdapter.ViewHolder>() {
 
+    var onItemClick: ((Meal) -> Unit)? = null
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val mealsImage: ImageView
@@ -23,6 +23,9 @@ class RecyclerMealsAdapter(private val dataSet : List<Meal>) :
         init{
             mealsImage = itemView.findViewById(R.id.mealsImage)
             mealsName = itemView.findViewById(R.id.mealsName)
+            itemView.setOnClickListener {
+                onItemClick?.invoke(dataSet[adapterPosition])
+            }
         }
     }
 
