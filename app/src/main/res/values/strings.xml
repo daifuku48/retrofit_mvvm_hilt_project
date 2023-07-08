@@ -5,4 +5,5 @@
     <string name="categotytext">CategotyText</string>
     <string name="categorymeal">CategoryMeal</string>
     <string name="meal">Meal</string>
+    <string name="recipe_image">Recipe Image</string>
 </resources>

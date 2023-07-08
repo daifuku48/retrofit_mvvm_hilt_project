@@ -7,14 +7,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.andgigachad.retrofit_mvvm_hilt_project.R
-import com.andgigachad.retrofit_mvvm_hilt_project.network.model.Category
-import com.andgigachad.retrofit_mvvm_hilt_project.network.model.Meal
+import com.andgigachad.retrofit_mvvm_hilt_project.network.model.MealNetwork
 import com.bumptech.glide.Glide
 
-class RecyclerMealsAdapter(private val dataSet : List<Meal>) :
+class RecyclerMealsAdapter(private val dataSet : List<MealNetwork>) :
     RecyclerView.Adapter<RecyclerMealsAdapter.ViewHolder>() {
 
-    var onItemClick: ((Meal) -> Unit)? = null
+    var onItemClick: ((MealNetwork) -> Unit)? = null
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val mealsImage: ImageView

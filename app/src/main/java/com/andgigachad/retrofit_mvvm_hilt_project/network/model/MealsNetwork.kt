@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class MealsNetwork(
     @SerializedName("meals")
-    var meals: List<Meal>
+    var meals: List<MealNetwork>
 )

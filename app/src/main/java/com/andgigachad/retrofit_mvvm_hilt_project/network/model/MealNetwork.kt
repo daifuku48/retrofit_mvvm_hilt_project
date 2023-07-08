@@ -2,7 +2,7 @@ package com.andgigachad.retrofit_mvvm_hilt_project.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Meal(
+data class MealNetwork(
     @SerializedName("strMeal")
     var strMeal: String,
     @SerializedName("strMealThumb")

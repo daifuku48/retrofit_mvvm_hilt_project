@@ -6,7 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.use_cases.GetAllMealsByCategoriesUseCase
-import com.andgigachad.retrofit_mvvm_hilt_project.network.model.Meal
+import com.andgigachad.retrofit_mvvm_hilt_project.network.model.MealNetwork
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
@@ -19,8 +19,8 @@ class MealByCategoriesListViewModel @Inject constructor(
     private val getAllMealsByCategoriesUseCase: GetAllMealsByCategoriesUseCase,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    private var _mealsList = MutableLiveData<List<Meal>>()
-    val mealsList: LiveData<List<Meal>> = _mealsList
+    private var _mealsList = MutableLiveData<List<MealNetwork>>()
+    val mealsList: LiveData<List<MealNetwork>> = _mealsList
     var loading = MutableLiveData(false)
 
     fun fetchData(category: String) {
