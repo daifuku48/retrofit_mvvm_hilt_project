@@ -6,4 +6,7 @@
     <string name="categorymeal">CategoryMeal</string>
     <string name="meal">Meal</string>
     <string name="recipe_image">Recipe Image</string>
+    <string name="meal_name">Meal name</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="eng_and_measure">eng_and_measure</string>
 </resources>

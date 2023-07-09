@@ -10,11 +10,11 @@ data class DetailMealNetwork(
     @SerializedName("strCategory")
     val strCategory: String,
     @SerializedName("strArea")
-    val strArea: String,
+    val strArea: String?,
     @SerializedName("strInstructions")
-    val strInstructions: String,
+    val strInstructions: String?,
     @SerializedName("strMealThumb")
-    val strMealThumb: String,
+    val strMealThumb: String?,
     @SerializedName("strIngredient1")
     val strIngredient1: String?,
     @SerializedName("strIngredient2")
