@@ -57,6 +57,15 @@ class RecipeOfMealFragment : Fragment() {
                 _binding?.mealIngredientsAndMeasure?.text = vm.textIngredientsAndMeasure
             }
         }
+
+
+        vm.loading.observe(viewLifecycleOwner){ isLoaded ->
+            if (isLoaded)
+            {
+                _binding?.scrollView?.visibility = View.VISIBLE
+                _binding?.progressBar?.visibility = View.GONE
+            }
+        }
     }
 
     override fun onDestroy() {

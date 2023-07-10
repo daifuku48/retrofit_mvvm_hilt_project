@@ -1,67 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/yellow"
     tools:context=".presentation.fragments.RecipeOfMealFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ProgressBar
+        android:id = "@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+    <ScrollView
+        android:id = "@+id/scrollView"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <ImageView
-            android:id = "@+id/mealImage"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:contentDescription="@string/recipe_image" />
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id = "@+id/mealImage"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="@string/recipe_image" />
 
+            <TextView
+                android:id = "@+id/mealName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mealImage"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"/>
+            <TextView
+                android:id = "@+id/text_ingredient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "@string/ingredients"
+                app:layout_constrainedWidth="true"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                app:layout_constraintTop_toBottomOf="@id/mealName"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="20dp"/>
 
-        <TextView
-            android:id = "@+id/mealName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mealImage"
-            android:layout_margin="10dp"/>
+            <TextView
+                android:id = "@+id/meal_ingredients_and_measure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@id/text_ingredient"
+                android:textSize="18sp"
+                android:layout_margin="20dp"
+                android:background="@drawable/background_ingredients"/>
 
-        <TextView
-            android:id = "@+id/text_ingredient"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text = "@string/ingredients"
-            android:textSize="18sp"
-            android:textColor="@color/blue"
-            app:layout_constraintTop_toBottomOf="@id/mealName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="20dp"/>
-
-        <TextView
-            android:id = "@+id/meal_ingredients_and_measure"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_ingredient"
-            android:textSize="18sp"
-            android:layout_margin="20dp"/>
-
-        <TextView
-            android:id="@+id/text_instructions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:textSize="18sp"
-            android:layout_margin="20dp"
-            app:layout_constraintTop_toBottomOf="@id/meal_ingredients_and_measure" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+            <TextView
+                android:id="@+id/text_instructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginTop="4dp"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/meal_ingredients_and_measure" />
+            <Space
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/text_instructions"
+                android:layout_height="50dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

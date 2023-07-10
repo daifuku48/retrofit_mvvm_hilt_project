@@ -5,14 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.DetailMealsDomain
-import com.andgigachad.retrofit_mvvm_hilt_project.domain.use_cases.GetAllMealsByCategoriesUseCase
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.use_cases.GetDetailMealUseCase
-import com.andgigachad.retrofit_mvvm_hilt_project.network.model.Category
 import com.andgigachad.retrofit_mvvm_hilt_project.network.model.DetailMealNetwork
-import com.andgigachad.retrofit_mvvm_hilt_project.network.model.MealNetwork
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
