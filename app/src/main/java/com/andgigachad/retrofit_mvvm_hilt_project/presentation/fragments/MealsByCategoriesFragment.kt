@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentMealByCategoriesBinding
@@ -20,7 +21,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @AndroidEntryPoint
 class MealsByCategoriesFragment : Fragment() {
-
+    private val navController by lazy { findNavController() }
     private var _binding : FragmentMealByCategoriesBinding? = null
     private val binding
         get() = _binding
@@ -72,6 +73,11 @@ class MealsByCategoriesFragment : Fragment() {
         vm.mealsList.observe(viewLifecycleOwner){ items ->
             val adapter = RecyclerMealsAdapter(items)
             binding?.mealsRecyclerView?.adapter = adapter
+            adapter.onItemClick = {mealNetwork ->
+                val action = MealsByCategoriesFragmentDirections.actionMealsByCategoriesFragmentToRecipeOfMealFragment()
+                sharedVM.setMealName(mealNetwork.strMeal)
+                navController.navigate(action)
+            }
         }
 
     }

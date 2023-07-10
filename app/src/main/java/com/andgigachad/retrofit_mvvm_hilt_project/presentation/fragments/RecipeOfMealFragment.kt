@@ -7,17 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentRecipeOfMealBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.RecipeOfMealViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.SharedViewModel
+import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
-
+@AndroidEntryPoint
 class RecipeOfMealFragment : Fragment() {
-
-    val sharedVM : SharedViewModel by activityViewModels()
-    val vm : RecipeOfMealViewModel by viewModels()
+    private val navController by lazy { findNavController() }
+    private val sharedVM : SharedViewModel by activityViewModels()
+    private val vm : RecipeOfMealViewModel by viewModels()
     private var _binding : FragmentRecipeOfMealBinding? = null
     private val binding
             get() = _binding
@@ -33,7 +36,27 @@ class RecipeOfMealFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedVM.getMealName().observe(viewLifecycleOwner){ mealName ->
+            if (mealName != null)
+            {
+                vm.fetchData(mealName)
+                binding?.mealName?.text = mealName
+            }
+        }
 
+        vm.mealsList.observe(viewLifecycleOwner){ meal ->
+            if (meal != null){
+                _binding?.mealImage?.let {
+                    Glide.with(requireContext())
+                        .load(meal.strMealThumb)
+                        .skipMemoryCache(true)
+                        .centerCrop()
+                        .into(it)
+                }
+                _binding?.textInstructions?.text = meal.strInstructions
+                _binding?.mealIngredientsAndMeasure?.text = vm.textIngredientsAndMeasure
+            }
+        }
     }
 
     override fun onDestroy() {

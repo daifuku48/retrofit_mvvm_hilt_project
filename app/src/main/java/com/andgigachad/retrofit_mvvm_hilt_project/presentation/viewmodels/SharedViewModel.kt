@@ -34,5 +34,5 @@ class SharedViewModel @Inject constructor(
         mealName.value = str
     }
 
-    fun getMealName() = mealName.value
+    fun getMealName() = mealName
 }

@@ -26,5 +26,13 @@
             android:name="category_name"
             app:argType="string"
             android:defaultValue="Beef"/>
+        <action
+            android:id="@+id/action_mealsByCategoriesFragment_to_recipeOfMealFragment"
+            app:destination="@id/recipeOfMealFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/recipeOfMealFragment"
+        android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.RecipeOfMealFragment"
+        android:label="fragment_recipe_of_meal"
+        tools:layout="@layout/fragment_recipe_of_meal" />
 </navigation>
