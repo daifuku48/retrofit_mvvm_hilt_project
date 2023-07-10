@@ -19,7 +19,6 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-@ExperimentalCoroutinesApi
 class RecipeOfMealViewModel @Inject constructor(
     private val getDetailMealUseCase: GetDetailMealUseCase,
     private val savedStateHandle: SavedStateHandle

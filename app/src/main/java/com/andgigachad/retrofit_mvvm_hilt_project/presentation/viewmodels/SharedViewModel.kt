@@ -14,19 +14,25 @@ class SharedViewModel @Inject constructor(
 ) : ViewModel() {
     private val categoryName = MutableLiveData<String>()
     private val categoryImage = MutableLiveData<String>()
+
+    private val mealName = MutableLiveData<String>()
+
     fun setCategoryName(str: String) {
         categoryName.value = str
     }
 
-    fun getCategoryName(): LiveData<String> {
-        return categoryName
-    }
+    fun getCategoryName() = categoryName
+
 
     fun setCategoryImage(str: String) {
         categoryImage.value = str
     }
 
-    fun getCategoryImage(): LiveData<String> {
-        return categoryImage
+    fun getCategoryImage() = categoryImage
+
+    fun setMealName(str: String){
+        mealName.value = str
     }
+
+    fun getMealName() = mealName.value
 }

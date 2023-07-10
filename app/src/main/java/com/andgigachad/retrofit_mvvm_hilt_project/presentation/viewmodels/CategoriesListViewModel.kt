@@ -13,7 +13,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@ExperimentalCoroutinesApi
 @HiltViewModel
 class CategoriesListViewModel @Inject constructor(
     private val getAllCategoriesMealUseCase: GetAllCategoriesMealUseCase,
