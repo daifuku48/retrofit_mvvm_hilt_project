@@ -39,84 +39,84 @@ class RecipeOfMealViewModel @Inject constructor(
     }
 
     private fun setTextIngredientsAndMeasure(domainResult: DetailMealNetwork) {
-        if (domainResult.strIngredient1 != null)
+        if (domainResult.strIngredient1 != null && domainResult.strIngredient1 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient1 + " " + domainResult.strMeasure1 + "\n"
         }
-        if (domainResult.strIngredient2 != null)
+        if (domainResult.strIngredient2 != null && domainResult.strIngredient2 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient2 + " " + domainResult.strMeasure2 + "\n"
         }
-        if (domainResult.strIngredient3 != null)
+        if (domainResult.strIngredient3 != null && domainResult.strIngredient3 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient3 + " " + domainResult.strMeasure3 + "\n"
         }
-        if (domainResult.strIngredient4 != null)
+        if (domainResult.strIngredient4 != null && domainResult.strIngredient4 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient4 + " " + domainResult.strMeasure4 + "\n"
         }
-        if (domainResult.strIngredient5 != null)
+        if (domainResult.strIngredient5 != null && domainResult.strIngredient5 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient5 + " " + domainResult.strMeasure5 + "\n"
         }
-        if (domainResult.strIngredient6 != null)
+        if (domainResult.strIngredient6 != null && domainResult.strIngredient6 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient6 + " " + domainResult.strMeasure6 + "\n"
         }
-        if (domainResult.strIngredient7 != null)
+        if (domainResult.strIngredient7 != null && domainResult.strIngredient7 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient7 + " " + domainResult.strMeasure7 + "\n"
         }
-        if (domainResult.strIngredient8 != null)
+        if (domainResult.strIngredient8 != null && domainResult.strIngredient8 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient8 + " " + domainResult.strMeasure8 + "\n"
         }
-        if (domainResult.strIngredient9 != null)
+        if (domainResult.strIngredient9 != null && domainResult.strIngredient9 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient9 + " " + domainResult.strMeasure9 + "\n"
         }
-        if (domainResult.strIngredient10 != null)
+        if (domainResult.strIngredient10 != null && domainResult.strIngredient10 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient10 + " " + domainResult.strMeasure10 + "\n"
         }
-        if (domainResult.strIngredient11 != null)
+        if (domainResult.strIngredient11 != null && domainResult.strIngredient11 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient11 + " " + domainResult.strMeasure11 + "\n"
         }
-        if (domainResult.strIngredient12 != null)
+        if (domainResult.strIngredient12 != null && domainResult.strIngredient12 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient12 + " " + domainResult.strMeasure12 + "\n"
         }
-        if (domainResult.strIngredient13 != null)
+        if (domainResult.strIngredient13 != null && domainResult.strIngredient13 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient13 + " " + domainResult.strMeasure13 + "\n"
         }
-        if (domainResult.strIngredient14 != null)
+        if (domainResult.strIngredient14 != null && domainResult.strIngredient14 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient14 + " " + domainResult.strMeasure14 + "\n"
         }
-        if (domainResult.strIngredient15 != null)
+        if (domainResult.strIngredient15 != null && domainResult.strIngredient15 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient15 + " " + domainResult.strMeasure15 + "\n"
         }
-        if (domainResult.strIngredient16 != null)
+        if (domainResult.strIngredient16 != null && domainResult.strIngredient16 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient16 + " " + domainResult.strMeasure16 + "\n"
         }
-        if (domainResult.strIngredient17 != null)
+        if (domainResult.strIngredient17 != null && domainResult.strIngredient17 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient17 + " " + domainResult.strMeasure17 + "\n"
         }
-        if (domainResult.strIngredient18 != null)
+        if (domainResult.strIngredient18 != null && domainResult.strIngredient18 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient18 + " " + domainResult.strMeasure18 + "\n"
         }
-        if (domainResult.strIngredient19 != null)
+        if (domainResult.strIngredient19 != null && domainResult.strIngredient19 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient19 + " " + domainResult.strMeasure19 + "\n"
         }
 
-        if (domainResult.strIngredient20 != null)
+        if (domainResult.strIngredient20 != null && domainResult.strIngredient20 != "")
         {
             textIngredientsAndMeasure += domainResult.strIngredient20 + " " + domainResult.strMeasure20 + "\n"
         }
