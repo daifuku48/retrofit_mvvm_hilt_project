@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/categorieslListFragment">
+    app:startDestination="@id/splashScreenFragment2">
     <fragment
         android:id="@+id/categorieslListFragment"
         android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.CategoriesListFragment"
@@ -12,20 +12,12 @@
         <action
             android:id="@+id/action_categorieslListFragment_to_mealsByCategoriesFragment"
             app:destination="@id/mealsByCategoriesFragment" />
-        <argument
-            android:name="category_name"
-            app:argType="string"
-            android:defaultValue="Beef"/>
     </fragment>
     <fragment
         android:id="@+id/mealsByCategoriesFragment"
         android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.MealsByCategoriesFragment"
         android:label="fragment_meal_by_categories"
         tools:layout="@layout/fragment_meal_by_categories" >
-        <argument
-            android:name="category_name"
-            app:argType="string"
-            android:defaultValue="Beef"/>
         <action
             android:id="@+id/action_mealsByCategoriesFragment_to_recipeOfMealFragment"
             app:destination="@id/recipeOfMealFragment" />
@@ -35,4 +27,13 @@
         android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.RecipeOfMealFragment"
         android:label="fragment_recipe_of_meal"
         tools:layout="@layout/fragment_recipe_of_meal" />
+    <fragment
+        android:id="@+id/splashScreenFragment2"
+        android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreenFragment2_to_categorieslListFragment"
+            app:destination="@id/categorieslListFragment" />
+    </fragment>
 </navigation>

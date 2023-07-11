@@ -41,6 +41,7 @@ class RecyclerMealsAdapter(private val dataSet : List<MealNetwork>) :
             .load(dataSet[position]
                 .strMealThumb)
             .skipMemoryCache(true)
+            .circleCrop()
             .into(holder.mealsImage)
 
         holder.mealsName.text = dataSet[position].strMeal
