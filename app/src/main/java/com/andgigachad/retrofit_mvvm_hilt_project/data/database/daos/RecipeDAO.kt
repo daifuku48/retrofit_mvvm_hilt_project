@@ -1,5 +1,6 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.data.database.daos
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -15,5 +16,5 @@ interface RecipeDAO{
     suspend fun delete(recipeEntity: RecipeEntity)
 
     @Query("SELECT * FROM RECIPE_TABLE")
-    suspend fun getAllRecipe() : List<RecipeEntity>
+    fun getAllRecipe() : List<RecipeEntity>
 }

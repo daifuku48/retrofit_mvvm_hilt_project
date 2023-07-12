@@ -11,8 +11,7 @@ import javax.inject.Inject
 class GetAllCategoriesMealUseCase @Inject constructor(
     private val favoriteMealRepository: FavoriteMealRepository
     ) {
-    suspend fun execute() : CategoriesDomain
-    {
+    suspend fun execute() : CategoriesDomain {
         return favoriteMealRepository.getAllCategories()
     }
 }

@@ -9,8 +9,9 @@ import javax.inject.Inject
 class GetDetailMealUseCase @Inject constructor(
     private val favoriteMealRepository: FavoriteMealRepository
 ) {
-    suspend fun execute(mealName: String) : DetailMealsDomain
-    {
-        return favoriteMealRepository.getDetailMealByName(mealName = mealName)
+    suspend fun execute(mealName: String) : DetailMealsDomain {
+        return favoriteMealRepository.getDetailMealByName(
+            mealName = mealName
+        )
     }
 }

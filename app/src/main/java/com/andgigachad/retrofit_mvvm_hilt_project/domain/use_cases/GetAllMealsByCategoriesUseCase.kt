@@ -7,8 +7,9 @@ import javax.inject.Inject
 class GetAllMealsByCategoriesUseCase @Inject constructor(
     private val favoriteMealRepository: FavoriteMealRepository,
 ) {
-    suspend fun execute(category: String) : MealsDomain
-    {
-        return favoriteMealRepository.getAllMealsByCategories(category)
+    suspend fun execute(category: String) : MealsDomain {
+        return favoriteMealRepository.getAllMealsByCategories(
+            category = category
+        )
     }
 }
