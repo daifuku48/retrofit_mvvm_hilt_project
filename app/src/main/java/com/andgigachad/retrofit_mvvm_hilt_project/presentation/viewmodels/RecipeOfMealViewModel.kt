@@ -115,5 +115,7 @@ class RecipeOfMealViewModel @Inject constructor(
         {
             textIngredientsAndMeasure += domainResult.strIngredient20 + " " + domainResult.strMeasure20 + "\n"
         }
+
+        textIngredientsAndMeasure = textIngredientsAndMeasure.substring(0, textIngredientsAndMeasure.length - 1)
     }
 }

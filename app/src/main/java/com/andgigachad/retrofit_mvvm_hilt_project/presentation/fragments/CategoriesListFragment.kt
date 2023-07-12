@@ -27,12 +27,11 @@ class CategoriesListFragment : Fragment() {
     private val navController by lazy { findNavController() }
 
     private var _binding : FragmentCategoriesListBinding? = null
-
-    private val vm : CategoriesListViewModel by viewModels()
-    private val sharedVM : SharedViewModel by activityViewModels()
     private val binding
         get() = _binding
 
+    private val vm : CategoriesListViewModel by viewModels()
+    private val sharedVM : SharedViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -70,5 +69,10 @@ class CategoriesListFragment : Fragment() {
             }
             binding?.categoriesRecyclerView?.adapter = adapter
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
