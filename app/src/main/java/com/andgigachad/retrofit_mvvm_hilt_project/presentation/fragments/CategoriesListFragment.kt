@@ -5,20 +5,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentCategoriesListBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.RecyclerCategoriesAdapter
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.CategoriesListViewModel
-import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.SharedViewModel
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
 @AndroidEntryPoint
@@ -31,7 +27,7 @@ class CategoriesListFragment : Fragment() {
         get() = _binding
 
     private val vm : CategoriesListViewModel by viewModels()
-    private val sharedVM : SharedViewModel by activityViewModels()
+    private val sharedVM : MainSharedViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

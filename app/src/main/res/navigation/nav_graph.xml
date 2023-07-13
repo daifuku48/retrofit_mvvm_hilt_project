@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_categorieslListFragment_to_mealsByCategoriesFragment"
             app:destination="@id/mealsByCategoriesFragment" />
+        <action
+            android:id="@+id/action_categorieslListFragment_to_favoritesMealsFragment"
+            app:destination="@id/favoritesMealsFragment" />
     </fragment>
     <fragment
         android:id="@+id/mealsByCategoriesFragment"
@@ -21,12 +24,16 @@
         <action
             android:id="@+id/action_mealsByCategoriesFragment_to_recipeOfMealFragment"
             app:destination="@id/recipeOfMealFragment" />
+        <action
+            android:id="@+id/action_mealsByCategoriesFragment_to_favoritesMealsFragment"
+            app:destination="@id/favoritesMealsFragment" />
     </fragment>
     <fragment
         android:id="@+id/recipeOfMealFragment"
         android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.RecipeOfMealFragment"
         android:label="fragment_recipe_of_meal"
-        tools:layout="@layout/fragment_recipe_of_meal" />
+        tools:layout="@layout/fragment_recipe_of_meal" >
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.SplashFragment"
@@ -35,6 +42,15 @@
         <action
             android:id="@+id/action_splashFragment_to_categorieslListFragment"
             app:destination="@id/categorieslListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesMealsFragment"
+        android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.FavoritesMealsFragment"
+        android:label="fragment_favorites_meals"
+        tools:layout="@layout/fragment_favorites_meals" >
+        <action
+            android:id="@+id/action_favoritesMealsFragment_to_recipeOfMealFragment"
+            app:destination="@id/recipeOfMealFragment" />
     </fragment>
 
 </navigation>

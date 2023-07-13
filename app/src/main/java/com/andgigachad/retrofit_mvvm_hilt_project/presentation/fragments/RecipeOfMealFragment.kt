@@ -9,17 +9,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentRecipeOfMealBinding
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.RecipeOfMealViewModel
-import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.SharedViewModel
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
 @AndroidEntryPoint
 class RecipeOfMealFragment : Fragment() {
     private val navController by lazy { findNavController() }
-    private val sharedVM : SharedViewModel by activityViewModels()
+    private val sharedVM : MainSharedViewModel by activityViewModels()
     private val vm : RecipeOfMealViewModel by viewModels()
     private var _binding : FragmentRecipeOfMealBinding? = null
     private val binding
@@ -70,11 +69,6 @@ class RecipeOfMealFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
         _binding = null
     }
 }

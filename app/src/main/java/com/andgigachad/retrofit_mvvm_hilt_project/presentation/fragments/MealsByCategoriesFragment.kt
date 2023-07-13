@@ -13,11 +13,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentMealByCategoriesBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.RecyclerMealsAdapter
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MealByCategoriesListViewModel
-import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.SharedViewModel
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @AndroidEntryPoint
 class MealsByCategoriesFragment : Fragment() {
@@ -27,7 +26,7 @@ class MealsByCategoriesFragment : Fragment() {
         get() = _binding
 
     private val vm : MealByCategoriesListViewModel by viewModels()
-    private val sharedVM : SharedViewModel by activityViewModels()
+    private val sharedVM : MainSharedViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
