@@ -8,7 +8,8 @@
         android:id="@+id/categorieslListFragment"
         android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.CategoriesListFragment"
         android:label="fragment_categories_list"
-        tools:layout="@layout/fragment_categories_list" >
+        tools:layout="@layout/fragment_categories_list"
+        app:popUpTo="true" >
         <action
             android:id="@+id/action_categorieslListFragment_to_mealsByCategoriesFragment"
             app:destination="@id/mealsByCategoriesFragment" />

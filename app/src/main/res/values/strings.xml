@@ -9,4 +9,6 @@
     <string name="meal_name">Meal name</string>
     <string name="ingredients">Ingredients</string>
     <string name="eng_and_measure">eng_and_measure</string>
+    <string name="night_light">night_light</string>
+    <string name="favorites">favorites</string>
 </resources>
