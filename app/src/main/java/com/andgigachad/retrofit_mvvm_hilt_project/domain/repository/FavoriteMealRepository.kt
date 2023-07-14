@@ -9,7 +9,7 @@ interface FavoriteMealRepository {
     suspend fun getAllCategories() : CategoriesDomain
     suspend fun getAllMealsByCategories(category: String) : MealsDomain
     suspend fun getDetailMealByName(mealName: String) : DetailMealsDomain
-    fun getAllMealsRecipeUseCase(): List<RecipeEntity>
+    suspend fun getAllMealsRecipeUseCase(): List<RecipeEntity>
 
     suspend fun insertFavoriteRecipe(mealEntity: RecipeEntity)
 

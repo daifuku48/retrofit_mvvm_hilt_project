@@ -1,6 +1,7 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.di
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.andgigachad.retrofit_mvvm_hilt_project.data.database.RecipeDatabase
 import com.andgigachad.retrofit_mvvm_hilt_project.data.database.daos.RecipeDAO
@@ -15,12 +16,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
     @Provides
-    fun provideRecipeDatabase(application: Application) : RecipeDatabase {
-        return Room.databaseBuilder(
-            application,
-            RecipeDatabase::class.java,
-            "recipe_db"
-        ).build()
+    fun provideContext(application: Application) : Context {
+        return application.applicationContext
+    }
+
+    @Provides
+    fun provideRecipeDatabase(context: Context) : RecipeDatabase {
+        return RecipeDatabase.getInstance(context)!!
     }
 
     @Singleton

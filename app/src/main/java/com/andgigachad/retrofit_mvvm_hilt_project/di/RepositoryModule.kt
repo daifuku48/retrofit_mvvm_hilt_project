@@ -48,7 +48,8 @@ object RepositoryModule {
             recipeService = recipeService,
             categoriesMapper = mapperCategories,
             mealsMapper = mapperMeals,
-            detailMealsMapper = detailMealMapper
+            detailMealsMapper = detailMealMapper,
+            recipeDAO = recipeDAO
         )
     }
 }

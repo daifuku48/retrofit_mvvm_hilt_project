@@ -4,17 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.andgigachad.retrofit_mvvm_hilt_project.data.database.entities.RecipeEntity
 
 @Dao
 interface RecipeDAO{
     @Insert
-    suspend fun insert(recipeEntity: RecipeEntity)
+    fun insert(recipeEntity: RecipeEntity)
 
     @Delete
-    suspend fun delete(recipeEntity: RecipeEntity)
+    fun delete(recipeEntity: RecipeEntity)
 
-    @Query("SELECT * FROM RECIPE_TABLE")
-    fun getAllRecipe() : List<RecipeEntity>
+    @Query("SELECT * FROM recipe_table")
+    fun getAllRecipe(): List<RecipeEntity>
 }

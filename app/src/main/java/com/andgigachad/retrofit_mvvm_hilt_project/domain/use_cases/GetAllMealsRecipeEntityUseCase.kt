@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetAllMealsRecipeEntityUseCase @Inject constructor(
     private val repository: FavoriteMealRepository
 ) {
-    fun execute() = repository.getAllMealsRecipeUseCase()
+    suspend fun execute() = repository.getAllMealsRecipeUseCase()
 }

@@ -32,7 +32,7 @@ class FavoriteMealRepositoryImpl(
         return detailMealsMapper.mapToDomainModel(recipeService.getDetailMealByName(mealName))
     }
 
-    override fun getAllMealsRecipeUseCase(): List<RecipeEntity> {
+    override suspend fun getAllMealsRecipeUseCase(): List<RecipeEntity> {
         return recipeDAO.getAllRecipe()
     }
 

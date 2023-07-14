@@ -8,8 +8,7 @@
         android:id="@+id/categorieslListFragment"
         android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.CategoriesListFragment"
         android:label="fragment_categories_list"
-        tools:layout="@layout/fragment_categories_list"
-        app:popUpTo="true" >
+        tools:layout="@layout/fragment_categories_list">
         <action
             android:id="@+id/action_categorieslListFragment_to_mealsByCategoriesFragment"
             app:destination="@id/mealsByCategoriesFragment" />
@@ -35,15 +34,7 @@
         android:label="fragment_recipe_of_meal"
         tools:layout="@layout/fragment_recipe_of_meal" >
     </fragment>
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.SplashFragment"
-        android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" >
-        <action
-            android:id="@+id/action_splashFragment_to_categorieslListFragment"
-            app:destination="@id/categorieslListFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/favoritesMealsFragment"
         android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.FavoritesMealsFragment"
@@ -52,6 +43,15 @@
         <action
             android:id="@+id/action_favoritesMealsFragment_to_recipeOfMealFragment"
             app:destination="@id/recipeOfMealFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.SplashFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashFragment_to_categorieslListFragment"
+            app:destination="@id/categorieslListFragment" />
     </fragment>
 
 </navigation>
