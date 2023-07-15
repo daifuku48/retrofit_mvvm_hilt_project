@@ -3,11 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/night_day"
-        android:title="@string/night_light"
-        android:icon="@drawable/night_icon"
-        app:showAsAction="ifRoom|collapseActionView" />
-    <item
         android:id="@+id/favorites"
         android:title = "@string/favorites"
         android:icon="@drawable/baseline_star_24"

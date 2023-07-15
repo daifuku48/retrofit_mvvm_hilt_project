@@ -39,10 +39,10 @@
         android:id="@+id/favoritesMealsFragment"
         android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.FavoritesMealsFragment"
         android:label="fragment_favorites_meals"
-        tools:layout="@layout/fragment_favorites_meals" >
+        tools:layout="@layout/fragment_favorites_meals">
         <action
-            android:id="@+id/action_favoritesMealsFragment_to_recipeOfMealFragment"
-            app:destination="@id/recipeOfMealFragment" />
+            android:id="@+id/action_favoritesMealsFragment_to_favoriteRecipeFragment"
+            app:destination="@id/favoriteRecipeFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -53,5 +53,10 @@
             android:id="@+id/action_splashFragment_to_categorieslListFragment"
             app:destination="@id/categorieslListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/favoriteRecipeFragment"
+        android:name="com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments.FavoriteRecipeFragment"
+        android:label="fragment_favorite_recipe"
+        tools:layout="@layout/fragment_favorite_recipe" />
 
 </navigation>

@@ -3,14 +3,19 @@ package com.andgigachad.retrofit_mvvm_hilt_project.presentation.fragments
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentMealByCategoriesBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.RecyclerMealsAdapter
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
@@ -79,6 +84,26 @@ class MealsByCategoriesFragment : Fragment() {
             }
         }
 
+        val menuProvider = object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                // Handle the menu selection
+                return when (menuItem.itemId) {
+                    R.id.favorites -> {
+                        val action = MealsByCategoriesFragmentDirections
+                            .actionMealsByCategoriesFragmentToFavoritesMealsFragment()
+                        navController.navigate(action)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
+
+        binding?.toolbar?.addMenuProvider(menuProvider)
     }
 
     override fun onDestroyView() {

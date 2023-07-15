@@ -6,18 +6,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/yellow"
-    tools:context=".presentation.fragments.RecipeOfMealFragment">
+    tools:context=".presentation.fragments.FavoriteRecipeFragment">
 
     <ProgressBar
         android:id = "@+id/progressBar"
         android:layout_width="wrap_content"
-        android:visibility="gone"
         android:layout_height="match_parent"
         android:layout_gravity="center" />
 
     <ScrollView
         android:id = "@+id/scrollView"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -77,16 +76,16 @@
                 app:layout_constraintTop_toBottomOf="@id/meal_ingredients_and_measure" />
 
             <Button
-                android:id="@+id/add_favorites_button"
+                android:id="@+id/delete_favorites_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text = "@string/add_to_favorites"
+                android:text = "@string/delete_from_favorites"
                 app:layout_constraintTop_toBottomOf="@id/text_instructions"
                 android:textSize="20sp"
-                android:textColor="@color/black"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:backgroundTint="@color/purple"
+                android:textColor="@color/black"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text = "@string/go_back"
-                app:layout_constraintTop_toBottomOf="@id/add_favorites_button"
+                app:layout_constraintTop_toBottomOf="@id/delete_favorites_button"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"

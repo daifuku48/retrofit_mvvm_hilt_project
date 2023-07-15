@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentRecipeOfMealBinding
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.FavoritesSharedViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.RecipeOfMealViewModel
 import com.bumptech.glide.Glide
@@ -17,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RecipeOfMealFragment : Fragment() {
-    private val navController by lazy { findNavController() }
     private val sharedVM : MainSharedViewModel by activityViewModels()
     private val vm : RecipeOfMealViewModel by viewModels()
     private var _binding : FragmentRecipeOfMealBinding? = null
@@ -35,6 +35,7 @@ class RecipeOfMealFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         sharedVM.getMealName().observe(viewLifecycleOwner){ mealName ->
             if (mealName != null)
             {

@@ -86,10 +86,6 @@ class CategoriesListFragment : Fragment() {
                         navController.navigate(action)
                         true
                     }
-                    R.id.night_day -> {
-                        // loadTasks(true)
-                        true
-                    }
                     else -> false
                 }
             }
