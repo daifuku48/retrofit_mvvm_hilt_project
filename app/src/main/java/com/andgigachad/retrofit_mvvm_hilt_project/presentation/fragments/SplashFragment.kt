@@ -38,7 +38,9 @@ class SplashFragment : Fragment() {
     {
         CoroutineScope(Dispatchers.Main).launch {
             delay(3000)
-            val action = SplashFragmentDirections.actionSplashFragmentToCategorieslListFragment()
+            val action = SplashFragmentDirections
+                .actionSplashFragmentToCategorieslListFragment()
+            findNavController().enableOnBackPressed(true)
             findNavController().navigate(action)
         }
     }

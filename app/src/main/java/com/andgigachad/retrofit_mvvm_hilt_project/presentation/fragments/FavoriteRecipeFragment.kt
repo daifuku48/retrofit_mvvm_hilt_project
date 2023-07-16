@@ -9,10 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentFavoriteRecipeBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentFavoritesMealsBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.FavoriteRecipeViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.FavoritesSharedViewModel
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,18 +39,39 @@ class FavoriteRecipeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding?.deleteFavoritesButton?.setOnClickListener {
-            sharedVM.get().observe(viewLifecycleOwner){ recipe ->
-                if (recipe != null)
-                {
-                    vm.deleteRecipeFromFavorites(recipe)
-                    Toast.makeText(requireContext(), "Recipe is delete from favorites", Toast.LENGTH_LONG)
-                        .show()
-                    findNavController().popBackStack()
-                }
+
+        vm.delay()
+
+        sharedVM.get().observe(viewLifecycleOwner) { recipe ->
+            Glide.with(requireContext())
+                .load(recipe.strMealThumb)
+                .skipMemoryCache(true)
+                .centerCrop()
+                .into(binding?.mealImage!!)
+
+            binding?.mealIngredientsAndMeasure?.text = vm.setTextOfEngridients(recipe)
+            binding?.textInstructions?.text = recipe.strInstructions
+            binding?.mealName?.text = recipe.strMeal
+            _binding?.deleteFavoritesButton?.setOnClickListener {
+                vm.deleteRecipeFromFavorites(recipe)
+                Toast.makeText(requireContext(),
+                    "Recipe is deleted from favorites", Toast.LENGTH_LONG)
+                    .show()
+                val action = FavoriteRecipeFragmentDirections.actionFavoriteRecipeFragmentToCategorieslListFragment()
+                findNavController().navigate(action)
             }
         }
 
+        vm.loading.observe(viewLifecycleOwner){ loading ->
+            if (loading){
+                _binding?.scrollView?.visibility = View.VISIBLE
+                _binding?.progressBar?.visibility = View.GONE
+            }
+        }
 
+        _binding?.goBackButton?.setOnClickListener {
+            val action = FavoriteRecipeFragmentDirections.actionFavoriteRecipeFragmentToCategorieslListFragment()
+            findNavController().navigate(action)
+        }
     }
 }

@@ -14,4 +14,6 @@
     <string name="add_to_favorites">Add To Favorites</string>
     <string name="delete_from_favorites">Delete From Favorites</string>
     <string name="go_back">Go back</string>
+    <string name="back_to_main">Back to Main</string>
+    <string name="list_is_empty_try_to_add_some_meal">List is empty, try to add some meal</string>
 </resources>

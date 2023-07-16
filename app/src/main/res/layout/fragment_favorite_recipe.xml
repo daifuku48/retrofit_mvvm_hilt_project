@@ -95,7 +95,7 @@
                 android:id="@+id/go_back_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text = "@string/go_back"
+                android:text ="@string/back_to_main"
                 app:layout_constraintTop_toBottomOf="@id/delete_favorites_button"
                 android:textSize="20sp"
                 android:textColor="@color/black"

@@ -68,7 +68,7 @@ class RecipeOfMealFragment : Fragment() {
 
         _binding?.addFavoritesButton?.setOnClickListener {
             vm.insertRecipeToFavorite()
-            Toast.makeText(requireContext(), "Recipe is inserted from favorites", Toast.LENGTH_LONG)
+            Toast.makeText(requireContext(), "Recipe is inserted to favorites", Toast.LENGTH_LONG)
                 .show()
             findNavController().popBackStack()
         }

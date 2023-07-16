@@ -49,13 +49,25 @@ class FavoritesMealsFragment : Fragment() {
         }
 
         vm.recipeList.observe(viewLifecycleOwner){ recipeList ->
-            val adapter = RecyclerFavoriteMealsAdapter(recipeList)
-            binding?.favoritesRecyclerView?.adapter = adapter
-            adapter.onItemClick = { recipe ->
-                val action = MealsByCategoriesFragmentDirections.actionMealsByCategoriesFragmentToRecipeOfMealFragment()
-                sharedVM.set(recipe)
-                findNavController().navigate(action)
+            if (recipeList.isEmpty()) {
+                //hide recycler is recipeList is Empty
+                binding?.goBackButton?.visibility = View.VISIBLE
+                binding?.listIsEmptyTextview?.visibility = View.VISIBLE
+                binding?.favoritesRecyclerView?.visibility = View.GONE
+            } else{
+                val adapter = RecyclerFavoriteMealsAdapter(recipeList)
+                binding?.favoritesRecyclerView?.adapter = adapter
+                adapter.onItemClick = { recipe ->
+                    val action = FavoritesMealsFragmentDirections
+                        .actionFavoritesMealsFragmentToFavoriteRecipeFragment()
+                    sharedVM.set(recipe)
+                    findNavController().navigate(action)
+                }
             }
+        }
+
+        binding?.goBackButton?.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

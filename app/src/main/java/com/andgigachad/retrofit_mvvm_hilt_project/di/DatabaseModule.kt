@@ -15,14 +15,21 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
+
+    @Singleton
     @Provides
-    fun provideContext(application: Application) : Context {
+    fun provideContext(application: Application): Context {
         return application.applicationContext
     }
 
     @Provides
-    fun provideRecipeDatabase(context: Context) : RecipeDatabase {
-        return RecipeDatabase.getInstance(context)!!
+    fun provideDatabase(context: Context) : RecipeDatabase {
+        return Room.databaseBuilder(context,
+            RecipeDatabase::class.java,
+            "recipe_db")
+            .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
+            .build()
     }
 
     @Singleton

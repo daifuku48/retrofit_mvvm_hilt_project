@@ -8,6 +8,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -84,6 +85,12 @@ class MealsByCategoriesFragment : Fragment() {
             }
         }
 
+
+        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding?.toolbar?.setNavigationOnClickListener {
+            navController.navigateUp()
+        }
         val menuProvider = object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu, menu)
@@ -102,6 +109,7 @@ class MealsByCategoriesFragment : Fragment() {
                 }
             }
         }
+
 
         binding?.toolbar?.addMenuProvider(menuProvider)
     }

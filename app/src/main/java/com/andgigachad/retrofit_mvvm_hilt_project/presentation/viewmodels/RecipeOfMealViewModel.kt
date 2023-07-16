@@ -84,6 +84,9 @@ class RecipeOfMealViewModel @Inject constructor(
             strMeasure19 = meal.value?.strMeasure19,
             strMeasure20 = meal.value?.strMeasure20
         )
+        viewModelScope.launch {
+            insertFavoriteMealEntityUseCase.execute(recipeEntity)
+        }
     }
 
     private fun setTextIngredientsAndMeasure(domainResult: DetailMealNetwork) {

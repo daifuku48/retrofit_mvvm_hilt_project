@@ -21,8 +21,8 @@ class RecyclerFavoriteMealsAdapter(private val dataSet : List<RecipeEntity>) :
         val mealsName: TextView
 
         init{
-            mealsImage = itemView.findViewById(R.id.mealsImage)
-            mealsName = itemView.findViewById(R.id.mealsName)
+            mealsImage = itemView.findViewById(R.id.recipeImage)
+            mealsName = itemView.findViewById(R.id.recipeName)
             itemView.setOnClickListener {
                 onItemClick?.invoke(dataSet[adapterPosition])
             }
@@ -31,7 +31,7 @@ class RecyclerFavoriteMealsAdapter(private val dataSet : List<RecipeEntity>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewHolder = LayoutInflater.from(parent.context)
-            .inflate(R.layout.meals_item, parent, false)
+            .inflate(R.layout.favorite_meal_item, parent, false)
         return ViewHolder(viewHolder)
     }
 
