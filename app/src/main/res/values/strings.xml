@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">retrofit_mvvm_hilt_project</string>
+    <string name="app_name">RecipesApp</string>
     <string name="category">Category</string>
     <string name="detail">Detail</string>
     <string name="categotytext">CategotyText</string>
