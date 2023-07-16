@@ -1,5 +1,6 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -11,12 +12,13 @@ import javax.inject.Inject
 class FavoritesSharedViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel()  {
-    private var recipe = MutableLiveData<RecipeEntity>()
-
-    fun setRecipe(recipeEntity: RecipeEntity) {
-        recipe.value = recipeEntity
+    private var _recipe = MutableLiveData<RecipeEntity>()
+    private val recipe : LiveData<RecipeEntity>
+        get() = _recipe
+    fun set(recipeEntity: RecipeEntity) {
+        _recipe.value = recipeEntity
     }
 
-    fun getRecipe() = recipe
+    fun get() = recipe
 
 }

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentFavoritesMealsBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.RecyclerFavoriteMealsAdapter
@@ -52,7 +53,8 @@ class FavoritesMealsFragment : Fragment() {
             binding?.favoritesRecyclerView?.adapter = adapter
             adapter.onItemClick = { recipe ->
                 val action = MealsByCategoriesFragmentDirections.actionMealsByCategoriesFragmentToRecipeOfMealFragment()
-                sharedVM.setRecipe(recipe)
+                sharedVM.set(recipe)
+                findNavController().navigate(action)
             }
         }
     }

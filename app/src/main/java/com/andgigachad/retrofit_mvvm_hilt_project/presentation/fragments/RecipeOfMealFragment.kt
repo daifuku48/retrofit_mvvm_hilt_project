@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentRecipeOfMealBinding
-import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.FavoritesSharedViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.RecipeOfMealViewModel
 import com.bumptech.glide.Glide
@@ -44,7 +44,7 @@ class RecipeOfMealFragment : Fragment() {
             }
         }
 
-        vm.mealsList.observe(viewLifecycleOwner){ meal ->
+        vm.meal.observe(viewLifecycleOwner){ meal ->
             if (meal != null){
                 _binding?.mealImage?.let {
                     Glide.with(requireContext())
@@ -58,13 +58,23 @@ class RecipeOfMealFragment : Fragment() {
             }
         }
 
-
         vm.loading.observe(viewLifecycleOwner){ isLoaded ->
             if (isLoaded)
             {
                 _binding?.scrollView?.visibility = View.VISIBLE
                 _binding?.progressBar?.visibility = View.GONE
             }
+        }
+
+        _binding?.addFavoritesButton?.setOnClickListener {
+            vm.insertRecipeToFavorite()
+            Toast.makeText(requireContext(), "Recipe is inserted from favorites", Toast.LENGTH_LONG)
+                .show()
+            findNavController().popBackStack()
+        }
+
+        _binding?.goBackButton?.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

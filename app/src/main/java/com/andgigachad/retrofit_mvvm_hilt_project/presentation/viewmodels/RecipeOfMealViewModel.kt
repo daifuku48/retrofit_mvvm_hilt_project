@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.andgigachad.retrofit_mvvm_hilt_project.data.database.entities.RecipeEntity
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.use_cases.GetDetailMealUseCase
+import com.andgigachad.retrofit_mvvm_hilt_project.domain.use_cases.InsertFavoriteMealEntityUseCase
 import com.andgigachad.retrofit_mvvm_hilt_project.network.model.DetailMealNetwork
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -16,11 +18,12 @@ import javax.inject.Inject
 @HiltViewModel
 class RecipeOfMealViewModel @Inject constructor(
     private val getDetailMealUseCase: GetDetailMealUseCase,
+    private val insertFavoriteMealEntityUseCase: InsertFavoriteMealEntityUseCase,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel(){
 
-    private var _mealsList = MutableLiveData<DetailMealNetwork>()
-    val mealsList: LiveData<DetailMealNetwork> = _mealsList
+    private var _meal = MutableLiveData<DetailMealNetwork>()
+    val meal: LiveData<DetailMealNetwork> = _meal
     var loading = MutableLiveData(false)
     var textIngredientsAndMeasure = ""
     fun fetchData(meal: String) {
@@ -28,9 +31,59 @@ class RecipeOfMealViewModel @Inject constructor(
             delay(1000L)
             val domainResult = getDetailMealUseCase.execute(meal).meals[0]
             setTextIngredientsAndMeasure(domainResult)
-            _mealsList.value = domainResult
+            _meal.value = domainResult
             loading.value = true
         }
+    }
+
+    fun insertRecipeToFavorite(){
+        val recipeEntity = RecipeEntity(
+            strArea = meal.value?.strArea,
+            strIngredient1 = meal.value?.strIngredient1,
+            strIngredient2 = meal.value?.strIngredient2,
+            strIngredient3 = meal.value?.strIngredient3,
+            strIngredient4 = meal.value?.strIngredient4,
+            strIngredient5 = meal.value?.strIngredient5,
+            strIngredient6 = meal.value?.strIngredient6,
+            strIngredient7 = meal.value?.strIngredient7,
+            strIngredient8 = meal.value?.strIngredient8,
+            strIngredient9 = meal.value?.strIngredient9,
+            strIngredient10 = meal.value?.strIngredient10,
+            strIngredient11 = meal.value?.strIngredient11,
+            strIngredient12 = meal.value?.strIngredient12,
+            strIngredient13 = meal.value?.strIngredient13,
+            strIngredient14 = meal.value?.strIngredient14,
+            strIngredient15 = meal.value?.strIngredient15,
+            strIngredient16 = meal.value?.strIngredient16,
+            strIngredient17 = meal.value?.strIngredient17,
+            strIngredient18 = meal.value?.strIngredient18,
+            strIngredient19 = meal.value?.strIngredient19,
+            strIngredient20 = meal.value?.strIngredient20,
+            strCategory = meal.value?.strCategory,
+            strMeal = meal.value?.strMeal,
+            strInstructions = meal.value?.strInstructions,
+            strMealThumb = meal.value?.strMealThumb,
+            strMeasure1 = meal.value?.strMeasure1,
+            strMeasure2 = meal.value?.strMeasure2,
+            strMeasure3 = meal.value?.strMeasure3,
+            strMeasure4 = meal.value?.strMeasure4,
+            strMeasure5 = meal.value?.strMeasure5,
+            strMeasure6 = meal.value?.strMeasure6,
+            strMeasure7 = meal.value?.strMeasure7,
+            strMeasure8 = meal.value?.strMeasure8,
+            strMeasure9 = meal.value?.strMeasure9,
+            strMeasure10 = meal.value?.strMeasure10,
+            strMeasure11 = meal.value?.strMeasure11,
+            strMeasure12 = meal.value?.strMeasure12,
+            strMeasure13 = meal.value?.strMeasure13,
+            strMeasure14 = meal.value?.strMeasure14,
+            strMeasure15 = meal.value?.strMeasure15,
+            strMeasure16 = meal.value?.strMeasure16,
+            strMeasure17 = meal.value?.strMeasure17,
+            strMeasure18 = meal.value?.strMeasure18,
+            strMeasure19 = meal.value?.strMeasure19,
+            strMeasure20 = meal.value?.strMeasure20
+        )
     }
 
     private fun setTextIngredientsAndMeasure(domainResult: DetailMealNetwork) {

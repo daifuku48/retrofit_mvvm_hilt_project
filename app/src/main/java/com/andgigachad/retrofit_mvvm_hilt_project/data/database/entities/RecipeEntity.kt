@@ -6,10 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "recipe_table")
 data class RecipeEntity(
-    @PrimaryKey(autoGenerate = true)
-    val uid: Int,
-    val strMeal: String,
-    val strCategory: String,
+    val strMeal: String?,
+    val strCategory: String?,
     val strArea: String?,
     val strInstructions: String?,
     val strMealThumb: String?,
@@ -53,4 +51,7 @@ data class RecipeEntity(
     val strMeasure18: String?,
     val strMeasure19: String?,
     val strMeasure20: String?
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var uid: Int = 0
+}

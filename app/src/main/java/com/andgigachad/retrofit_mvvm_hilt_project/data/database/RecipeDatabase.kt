@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.andgigachad.retrofit_mvvm_hilt_project.data.database.daos.RecipeDAO
 import com.andgigachad.retrofit_mvvm_hilt_project.data.database.entities.RecipeEntity
 
-@Database(entities = [RecipeEntity::class], version = 3)
+@Database(entities = [RecipeEntity::class], version = 5)
 abstract class RecipeDatabase : RoomDatabase() {
     abstract fun recipeDAO() : RecipeDAO
 
@@ -20,6 +20,8 @@ abstract class RecipeDatabase : RoomDatabase() {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
                         RecipeDatabase::class.java,
                         "recipe_db")
+                        .allowMainThreadQueries()
+                        .fallbackToDestructiveMigration()
                         .build()
                 }
             }
