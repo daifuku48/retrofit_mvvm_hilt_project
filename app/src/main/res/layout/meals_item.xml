@@ -10,7 +10,7 @@
         android:layout_margin="10dp"
         android:orientation="vertical"
         android:padding="12dp"
-        android:background="@drawable/list_category_background">
+        style="@style/list_category_background">
 
         <ImageView
             android:id = "@+id/mealsImage"
@@ -22,6 +22,7 @@
             android:layout_gravity="center" />
 
         <TextView
+            style="@style/text"
             android:id = "@+id/mealsName"
             android:layout_width="wrap_content"
             android:ellipsize="end"

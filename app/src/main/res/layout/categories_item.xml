@@ -2,13 +2,14 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:layout_height="120dp"
+    style="@style/Screen">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="10dp"
-        android:background="@drawable/list_category_background">
+        style="@style/list_category_background">
 
         <ImageView
             android:id = "@+id/recipeImage"
@@ -20,6 +21,7 @@
             android:layout_marginStart="30dp"/>
 
         <TextView
+            style="@style/text"
             android:id = "@+id/recipeName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +43,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/detail"
-            android:textColor="@color/blue"
+            style="@style/text_detail"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/recipeImage"

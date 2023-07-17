@@ -4,8 +4,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="purple">#B2A4FF</color>
     <color name="pink">#FFB4B4</color>
+    <color name="dark_theme_items">#212A3E</color>
     <color name="pink_100">#FFDEB4</color>
     <color name="yellow">#FDF7C3</color>
     <color name="blue">#5A96E3</color>
-    <color name="my_light_primary">#FFB4B4</color>
+    <color name="blue_light">#C5DFF8</color>
+    <color name="my_light_primary">#C5DFF8</color>
+    <color name="my_night_primary">#A78295</color>
+    <color name="splash">#fff9ff</color>
+    <color name="blue_night">#071952</color>
 </resources>
