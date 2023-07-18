@@ -23,6 +23,16 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "@string/no_internet_connection"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        android:gravity="center"
+        android:visibility="visible"
+        style="@style/interner_connection_text"
+        android:textSize="20sp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categories_recycler_view"
         android:visibility="gone"
