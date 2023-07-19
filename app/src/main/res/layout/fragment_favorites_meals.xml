@@ -16,10 +16,11 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
+        android:id = "@+id/internet_connection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text = "@string/no_internet_connection"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         android:gravity="center"
         android:visibility="gone"
         style="@style/interner_connection_text"

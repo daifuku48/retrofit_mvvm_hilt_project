@@ -49,8 +49,8 @@ class CategoriesListFragment : Fragment() {
         binding?.categoriesRecyclerView?.layoutManager = layoutManager
 
         //making loading
-        vm.loading.observe(viewLifecycleOwner) {
-            if (it)
+        vm.loading.observe(viewLifecycleOwner) { loading ->
+            if (loading)
             {
                 binding?.progressBar?.visibility = View.GONE
                 binding?.categoriesRecyclerView?.visibility = View.VISIBLE
@@ -91,6 +91,17 @@ class CategoriesListFragment : Fragment() {
 
 
         binding?.toolbar?.addMenuProvider(menuProvider)
+
+
+        vm.networkConnection.observe(viewLifecycleOwner){ connection ->
+            if (!connection){
+                _binding?.internetConnection?.visibility = View.VISIBLE
+                _binding?.categoriesRecyclerView?.visibility = View.GONE
+            } else {
+                _binding?.internetConnection?.visibility = View.GONE
+                _binding?.categoriesRecyclerView?.visibility = View.VISIBLE
+            }
+        }
     }
 
 

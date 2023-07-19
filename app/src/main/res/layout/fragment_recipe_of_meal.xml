@@ -14,10 +14,11 @@
         android:layout_height="match_parent"
         android:layout_gravity="center" />
     <TextView
+        android:id = "@+id/internet_connection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text = "@string/no_internet_connection"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         android:gravity="center"
         android:visibility="gone"
         style="@style/interner_connection_text"

@@ -8,6 +8,7 @@
     style="@style/Screen"
     tools:context=".presentation.fragments.FavoriteRecipeFragment">
     <TextView
+        android:id = "@+id/internet_connection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text = "@string/no_internet_connection"
