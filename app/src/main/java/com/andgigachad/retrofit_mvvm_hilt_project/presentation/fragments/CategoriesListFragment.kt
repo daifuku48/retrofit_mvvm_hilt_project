@@ -12,6 +12,7 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andgigachad.retrofit_mvvm_hilt_project.R
@@ -20,6 +21,9 @@ import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.Recycl
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.CategoriesListViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 @AndroidEntryPoint
@@ -89,21 +93,21 @@ class CategoriesListFragment : Fragment() {
             }
         }
 
-
         binding?.toolbar?.addMenuProvider(menuProvider)
 
-
-        vm.networkConnection.observe(viewLifecycleOwner){ connection ->
-            if (!connection){
-                _binding?.internetConnection?.visibility = View.VISIBLE
-                _binding?.categoriesRecyclerView?.visibility = View.GONE
-            } else {
-                _binding?.internetConnection?.visibility = View.GONE
-                _binding?.categoriesRecyclerView?.visibility = View.VISIBLE
+        lifecycleScope.launch {
+            vm.networkConnection.collect{ connection ->
+                if (!connection){
+                    _binding?.internetConnection?.visibility = View.VISIBLE
+                    _binding?.categoriesRecyclerView?.visibility = View.GONE
+                } else {
+                    _binding?.internetConnection?.visibility = View.GONE
+                    _binding?.categoriesRecyclerView?.visibility = View.VISIBLE
+                }
             }
         }
-    }
 
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

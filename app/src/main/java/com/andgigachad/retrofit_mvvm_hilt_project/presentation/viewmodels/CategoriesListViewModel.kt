@@ -19,11 +19,11 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import java.lang.NullPointerException
 import javax.inject.Inject
 
 @HiltViewModel
 class CategoriesListViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
     private val checkInternetConnectionUseCase: CheckInternetConnectionUseCase,
     private val getAllCategoriesMealUseCase: GetAllCategoriesMealUseCase,
     private val savedStateHandle: SavedStateHandle
@@ -49,6 +49,7 @@ class CategoriesListViewModel @Inject constructor(
             _networkConnection.value = checkInternetConnectionUseCase.execute()
         }
     }
+
 
     private fun fetchData() {
 
