@@ -95,18 +95,10 @@ class CategoriesListFragment : Fragment() {
 
         binding?.toolbar?.addMenuProvider(menuProvider)
 
-        lifecycleScope.launch {
-            vm.networkConnection.collect{ connection ->
-                if (!connection){
-                    _binding?.internetConnection?.visibility = View.VISIBLE
-                    _binding?.categoriesRecyclerView?.visibility = View.GONE
-                } else {
-                    _binding?.internetConnection?.visibility = View.GONE
-                    _binding?.categoriesRecyclerView?.visibility = View.VISIBLE
-                }
-            }
-        }
+    }
 
+    override fun onStart() {
+        super.onStart()
     }
 
     override fun onDestroyView() {
