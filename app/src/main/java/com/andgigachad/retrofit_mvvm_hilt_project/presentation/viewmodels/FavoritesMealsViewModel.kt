@@ -25,7 +25,6 @@ class FavoritesMealsViewModel @Inject constructor(
     val recipeList : LiveData<List<RecipeEntity>>
         get() = _recipeList
     var loading = MutableLiveData<Boolean>()
-    var networkConnection = MutableLiveData(true)
     init{
         loading.value = false
         fetchData()
@@ -37,11 +36,6 @@ class FavoritesMealsViewModel @Inject constructor(
             val result = getAllMealsRecipeEntityUseCase.execute()
             _recipeList.value = result
             loading.value = true
-
-            while (true){
-                networkConnection.value = checkInternetConnectionUseCase.execute()
-                delay(10000L)
-            }
         }
     }
 }

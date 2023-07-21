@@ -14,13 +14,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavoriteRecipeViewModel @Inject constructor(
-    private val checkInternetConnectionUseCase: CheckInternetConnectionUseCase,
     private val deleteFavoriteMealEntityUseCase : DeleteFavoriteMealEntityUseCase,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     val loading = MutableLiveData<Boolean>()
-    var networkConnection = MutableLiveData(true)
     init {
         loading.value = false
     }
@@ -29,11 +27,6 @@ class FavoriteRecipeViewModel @Inject constructor(
         viewModelScope.launch {
             delay(1000L)
             loading.value = true
-
-            while (true){
-                networkConnection.value = checkInternetConnectionUseCase.execute()
-                delay(10000L)
-            }
         }
     }
     fun deleteRecipeFromFavorites(recipe: RecipeEntity){
