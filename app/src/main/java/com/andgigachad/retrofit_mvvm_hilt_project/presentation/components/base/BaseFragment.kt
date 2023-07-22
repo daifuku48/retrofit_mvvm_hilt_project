@@ -6,7 +6,7 @@ import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.ErrorResult
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.SuccessResult
-
+import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.Result
 abstract class BaseFragment : Fragment() {
     /**
      * Call this method when activity controls (e.g. toolbar) should be re-rendered

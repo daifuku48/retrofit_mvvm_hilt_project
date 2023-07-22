@@ -1,9 +1,10 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.ErrorResult
+import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.SuccessResult
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.use_cases.GetAllCategoriesMealUseCase
 import com.andgigachad.retrofit_mvvm_hilt_project.network.model.Category
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.base.BaseViewModel
@@ -33,10 +34,11 @@ class CategoriesListViewModel @Inject constructor(
         viewModelScope.launch {
             delay(1000L)
             try {
-                val domainResult = getAllCategoriesMealUseCase.execute().categories
-                _categoriesList.value = domainResult
+                val domainResult = SuccessResult(getAllCategoriesMealUseCase.execute().categories)
+                _categoriesList.postValue(domainResult)
             } catch (e: UnknownHostException){
-                Log.d("error", e.message.toString())
+                val errorResult = ErrorResult<List<Category>>(Exception("IllegalAccessError"))
+                _categoriesList.postValue(errorResult)
             }
 
             loading.value = true

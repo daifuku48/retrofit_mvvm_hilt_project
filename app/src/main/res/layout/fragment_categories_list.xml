@@ -54,8 +54,6 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
-    <include
-        android:id = "@+id/error_layout"
-        layout="@layout/layout_result_of_operation" />
+    <include layout="@layout/layout_result_of_operation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

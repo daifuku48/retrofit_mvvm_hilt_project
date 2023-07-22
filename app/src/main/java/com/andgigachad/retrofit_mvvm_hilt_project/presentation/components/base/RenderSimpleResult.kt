@@ -6,7 +6,7 @@ import android.widget.Button
 import androidx.core.view.children
 import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.LayoutResultOfOperationBinding
-
+import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.Result
 
 fun <T> BaseFragment.renderSimpleResult(root: ViewGroup, result: Result<T>, onSuccess: (T) -> Unit) {
     val binding = LayoutResultOfOperationBinding.bind(root)

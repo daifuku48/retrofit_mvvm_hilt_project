@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.MenuProvider
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -65,7 +64,7 @@ class CategoriesListFragment() : BaseFragment() {
                 root = binding?.root!!,
                 result = result,
                 onSuccess = {
-                    val adapter = RecyclerCategoriesAdapter(it.data)
+                    val adapter = RecyclerCategoriesAdapter(it)
                     adapter.onItemClick = { category ->
                         Log.d("Category", category.strCategory)
                         val action = CategoriesListFragmentDirections
@@ -75,6 +74,7 @@ class CategoriesListFragment() : BaseFragment() {
                         navController.navigate(action)
                     }
                     binding?.categoriesRecyclerView?.adapter = adapter
+                    binding?.appBarLayout?.visibility = View.VISIBLE
                 },
                 onError = {
                     resultBinding.buttonErrorRestart.visibility = View.VISIBLE
