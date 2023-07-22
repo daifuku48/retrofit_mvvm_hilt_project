@@ -1,4 +1,4 @@
-package com.andgigachad.retrofit_mvvm_hilt_project.presentation.components
+package com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.data.database.entities.RecipeEntity
-import com.andgigachad.retrofit_mvvm_hilt_project.network.model.MealNetwork
 import com.bumptech.glide.Glide
 
 class RecyclerFavoriteMealsAdapter(private val dataSet : List<RecipeEntity>) :

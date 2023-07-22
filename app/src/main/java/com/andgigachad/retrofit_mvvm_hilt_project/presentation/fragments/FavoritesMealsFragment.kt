@@ -10,10 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentFavoritesMealsBinding
-import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.RecyclerFavoriteMealsAdapter
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.adapters.RecyclerFavoriteMealsAdapter
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.FavoritesMealsViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.FavoritesSharedViewModel
-import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 

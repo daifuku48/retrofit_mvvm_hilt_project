@@ -1,4 +1,4 @@
-package com.andgigachad.retrofit_mvvm_hilt_project.presentation.components
+package com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.adapters
 
 import android.view.LayoutInflater
 import android.view.View

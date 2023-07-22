@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentMealByCategoriesBinding
-import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.RecyclerMealsAdapter
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.adapters.RecyclerMealsAdapter
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MealByCategoriesListViewModel
 import com.bumptech.glide.Glide

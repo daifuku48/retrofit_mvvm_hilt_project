@@ -12,25 +12,21 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentCategoriesListBinding
-import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.RecyclerCategoriesAdapter
+import com.andgigachad.retrofit_mvvm_hilt_project.databinding.LayoutResultOfOperationBinding
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.adapters.RecyclerCategoriesAdapter
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.base.BaseFragment
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.CategoriesListViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-
 
 @AndroidEntryPoint
-class CategoriesListFragment : Fragment() {
+class CategoriesListFragment() : BaseFragment() {
     //init navController
     private val navController by lazy { findNavController() }
-
     private var _binding : FragmentCategoriesListBinding? = null
     private val binding
         get() = _binding
@@ -61,18 +57,30 @@ class CategoriesListFragment : Fragment() {
             }
         }
 
+
+        val resultBinding = LayoutResultOfOperationBinding.bind(binding?.root!!)
         //init recyclerView
-        vm.categoriesList.observe(viewLifecycleOwner){ items->
-            val adapter = RecyclerCategoriesAdapter(items)
-            adapter.onItemClick = { category ->
-                Log.d("Category", category.strCategory)
-                val action = CategoriesListFragmentDirections
-                    .actionCategorieslListFragmentToMealsByCategoriesFragment()
-                sharedVM.setCategoryName(category.strCategory)
-                sharedVM.setCategoryImage(category.strCategoryThumb)
-                navController.navigate(action)
-            }
-            binding?.categoriesRecyclerView?.adapter = adapter
+        vm.categoriesList.observe(viewLifecycleOwner){ result ->
+            renderResult(
+                root = binding?.root!!,
+                result = result,
+                onSuccess = {
+                    val adapter = RecyclerCategoriesAdapter(it.data)
+                    adapter.onItemClick = { category ->
+                        Log.d("Category", category.strCategory)
+                        val action = CategoriesListFragmentDirections
+                            .actionCategorieslListFragmentToMealsByCategoriesFragment()
+                        sharedVM.setCategoryName(category.strCategory)
+                        sharedVM.setCategoryImage(category.strCategoryThumb)
+                        navController.navigate(action)
+                    }
+                    binding?.categoriesRecyclerView?.adapter = adapter
+                },
+                onError = {
+                    resultBinding.buttonErrorRestart.visibility = View.VISIBLE
+                    resultBinding.textError.visibility = View.VISIBLE
+                }
+            )
         }
         val menuProvider = object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
