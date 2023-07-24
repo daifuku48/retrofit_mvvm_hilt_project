@@ -1,5 +1,7 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.domain.model
 
+import java.lang.Exception
+
 
 typealias Mapper<Input, Output> = (Input) -> Output
 
@@ -20,10 +22,3 @@ data class SuccessResult<T>(
 data class ErrorResult<T>(
     val exception: Exception
 ) : Result<T>()
-
-fun <T> Result<T>?.takeAccess() : T? {
-    return if (this is SuccessResult)
-        this.data
-    else
-        null
-}

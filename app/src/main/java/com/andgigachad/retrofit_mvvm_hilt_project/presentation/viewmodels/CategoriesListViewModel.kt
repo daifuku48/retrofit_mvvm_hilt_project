@@ -29,6 +29,10 @@ class CategoriesListViewModel @Inject constructor(
         fetchData()
     }
 
+    fun restartQuery() {
+        fetchData()
+    }
+
     private fun fetchData() {
 
         viewModelScope.launch {

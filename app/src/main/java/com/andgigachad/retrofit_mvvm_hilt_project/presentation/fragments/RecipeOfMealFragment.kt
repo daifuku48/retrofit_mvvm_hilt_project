@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentRecipeOfMealBinding
+import com.andgigachad.retrofit_mvvm_hilt_project.databinding.LayoutResultOfOperationBinding
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.base.BaseFragment
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.RecipeOfMealViewModel
 import com.bumptech.glide.Glide
@@ -17,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class RecipeOfMealFragment : Fragment() {
+class RecipeOfMealFragment : BaseFragment() {
     private val sharedVM : MainSharedViewModel by activityViewModels()
     private val vm : RecipeOfMealViewModel by viewModels()
     private var _binding : FragmentRecipeOfMealBinding? = null
@@ -44,18 +45,28 @@ class RecipeOfMealFragment : Fragment() {
             }
         }
 
-        vm.meal.observe(viewLifecycleOwner){ meal ->
-            if (meal != null){
-                _binding?.mealImage?.let {
-                    Glide.with(requireContext())
-                        .load(meal.strMealThumb)
-                        .skipMemoryCache(true)
-                        .centerCrop()
-                        .into(it)
+        val resultBinding = LayoutResultOfOperationBinding.bind(binding?.root!!)
+
+        vm.meal.observe(viewLifecycleOwner){  result ->
+            renderResult(
+                root = binding?.root!!,
+                result = result,
+                onSuccess = { meal ->
+                    _binding?.mealImage?.let {
+                        Glide.with(requireContext())
+                            .load(meal.strMealThumb)
+                            .skipMemoryCache(true)
+                            .centerCrop()
+                            .into(it)
+                    }
+                    _binding?.textInstructions?.text = meal.strInstructions
+                    _binding?.mealIngredientsAndMeasure?.text = vm.textIngredientsAndMeasure
+                },
+                onError = {
+                    resultBinding.buttonErrorRestart.visibility = View.VISIBLE
+                    resultBinding.textError.visibility = View.VISIBLE
                 }
-                _binding?.textInstructions?.text = meal.strInstructions
-                _binding?.mealIngredientsAndMeasure?.text = vm.textIngredientsAndMeasure
-            }
+            )
         }
 
         vm.loading.observe(viewLifecycleOwner){ isLoaded ->

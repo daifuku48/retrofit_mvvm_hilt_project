@@ -126,6 +126,8 @@
                 android:layout_height="30dp"
                 />
 
+            <include layout="@layout/layout_result_of_operation"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </LinearLayout>

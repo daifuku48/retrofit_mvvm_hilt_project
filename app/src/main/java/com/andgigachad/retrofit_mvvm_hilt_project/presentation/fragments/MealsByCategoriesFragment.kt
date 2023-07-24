@@ -18,14 +18,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentMealByCategoriesBinding
+import com.andgigachad.retrofit_mvvm_hilt_project.databinding.LayoutResultOfOperationBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.adapters.RecyclerMealsAdapter
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.base.BaseFragment
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MealByCategoriesListViewModel
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MealsByCategoriesFragment : Fragment() {
+class MealsByCategoriesFragment : BaseFragment() {
     private val navController by lazy { findNavController() }
     private var _binding : FragmentMealByCategoriesBinding? = null
     private val binding
@@ -75,14 +77,26 @@ class MealsByCategoriesFragment : Fragment() {
             }
         }
 
-        vm.mealsList.observe(viewLifecycleOwner){ items ->
-            val adapter = RecyclerMealsAdapter(items)
-            binding?.mealsRecyclerView?.adapter = adapter
-            adapter.onItemClick = {mealNetwork ->
-                val action = MealsByCategoriesFragmentDirections.actionMealsByCategoriesFragmentToRecipeOfMealFragment()
-                sharedVM.setMealName(mealNetwork.strMeal)
-                navController.navigate(action)
-            }
+        val resultBinding = LayoutResultOfOperationBinding.bind(binding?.root!!)
+
+        vm.mealsList.observe(viewLifecycleOwner){ result ->
+            renderResult(
+                root = binding?.root!!,
+                result = result,
+                onSuccess = { items ->
+                    val adapter = RecyclerMealsAdapter(items)
+                    binding?.mealsRecyclerView?.adapter = adapter
+                    adapter.onItemClick = {mealNetwork ->
+                        val action = MealsByCategoriesFragmentDirections.actionMealsByCategoriesFragmentToRecipeOfMealFragment()
+                        sharedVM.setMealName(mealNetwork.strMeal)
+                        navController.navigate(action)
+                    }
+                },
+                onError = {
+                    resultBinding.buttonErrorRestart.visibility = View.VISIBLE
+                    resultBinding.textError.visibility = View.VISIBLE
+                }
+            )
         }
 
 

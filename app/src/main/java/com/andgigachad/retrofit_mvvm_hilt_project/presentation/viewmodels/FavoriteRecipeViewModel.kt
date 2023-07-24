@@ -31,6 +31,7 @@ class FavoriteRecipeViewModel @Inject constructor(
     }
     fun deleteRecipeFromFavorites(recipe: RecipeEntity){
         viewModelScope.launch {
+
             deleteFavoriteMealEntityUseCase.execute(recipe)
         }
     }

@@ -6,12 +6,17 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.andgigachad.retrofit_mvvm_hilt_project.data.database.entities.RecipeEntity
+import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.ErrorResult
+import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.SuccessResult
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.use_cases.GetDetailMealUseCase
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.use_cases.InsertFavoriteMealEntityUseCase
 import com.andgigachad.retrofit_mvvm_hilt_project.network.model.DetailMealNetwork
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.base.LiveResult
+import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.base.MutableLiveResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 
@@ -22,67 +27,72 @@ class RecipeOfMealViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel(){
 
-    private var _meal = MutableLiveData<DetailMealNetwork>()
-    val meal: LiveData<DetailMealNetwork> = _meal
+    private var _meal = MutableLiveResult<DetailMealNetwork>()
+    val meal: LiveResult<DetailMealNetwork> = _meal
     var loading = MutableLiveData(false)
     var textIngredientsAndMeasure = ""
     fun fetchData(meal: String) {
         viewModelScope.launch {
             delay(1000L)
-            val domainResult = getDetailMealUseCase.execute(meal).meals[0]
-            setTextIngredientsAndMeasure(domainResult)
-            _meal.value = domainResult
-            loading.value = true
+            try{
+                val result = SuccessResult(getDetailMealUseCase.execute(meal).meals[0])
+                _meal.postValue(result)
+                loading.value = true
+            } catch (e: UnknownHostException){
+                val errorResult = ErrorResult<DetailMealNetwork>(Exception("IllegalAccessError"))
+                _meal.postValue(errorResult)
+            }
         }
     }
 
+
     fun insertRecipeToFavorite(){
         val recipeEntity = RecipeEntity(
-            strArea = meal.value?.strArea,
-            strIngredient1 = meal.value?.strIngredient1,
-            strIngredient2 = meal.value?.strIngredient2,
-            strIngredient3 = meal.value?.strIngredient3,
-            strIngredient4 = meal.value?.strIngredient4,
-            strIngredient5 = meal.value?.strIngredient5,
-            strIngredient6 = meal.value?.strIngredient6,
-            strIngredient7 = meal.value?.strIngredient7,
-            strIngredient8 = meal.value?.strIngredient8,
-            strIngredient9 = meal.value?.strIngredient9,
-            strIngredient10 = meal.value?.strIngredient10,
-            strIngredient11 = meal.value?.strIngredient11,
-            strIngredient12 = meal.value?.strIngredient12,
-            strIngredient13 = meal.value?.strIngredient13,
-            strIngredient14 = meal.value?.strIngredient14,
-            strIngredient15 = meal.value?.strIngredient15,
-            strIngredient16 = meal.value?.strIngredient16,
-            strIngredient17 = meal.value?.strIngredient17,
-            strIngredient18 = meal.value?.strIngredient18,
-            strIngredient19 = meal.value?.strIngredient19,
-            strIngredient20 = meal.value?.strIngredient20,
-            strCategory = meal.value?.strCategory,
-            strMeal = meal.value?.strMeal,
-            strInstructions = meal.value?.strInstructions,
-            strMealThumb = meal.value?.strMealThumb,
-            strMeasure1 = meal.value?.strMeasure1,
-            strMeasure2 = meal.value?.strMeasure2,
-            strMeasure3 = meal.value?.strMeasure3,
-            strMeasure4 = meal.value?.strMeasure4,
-            strMeasure5 = meal.value?.strMeasure5,
-            strMeasure6 = meal.value?.strMeasure6,
-            strMeasure7 = meal.value?.strMeasure7,
-            strMeasure8 = meal.value?.strMeasure8,
-            strMeasure9 = meal.value?.strMeasure9,
-            strMeasure10 = meal.value?.strMeasure10,
-            strMeasure11 = meal.value?.strMeasure11,
-            strMeasure12 = meal.value?.strMeasure12,
-            strMeasure13 = meal.value?.strMeasure13,
-            strMeasure14 = meal.value?.strMeasure14,
-            strMeasure15 = meal.value?.strMeasure15,
-            strMeasure16 = meal.value?.strMeasure16,
-            strMeasure17 = meal.value?.strMeasure17,
-            strMeasure18 = meal.value?.strMeasure18,
-            strMeasure19 = meal.value?.strMeasure19,
-            strMeasure20 = meal.value?.strMeasure20
+            strArea = (meal.value as SuccessResult).data.strArea,
+            strIngredient1 = (meal.value as SuccessResult).data.strIngredient1,
+            strIngredient2 = (meal.value as SuccessResult).data.strIngredient2,
+            strIngredient3 = (meal.value as SuccessResult).data.strIngredient3,
+            strIngredient4 = (meal.value as SuccessResult).data.strIngredient4,
+            strIngredient5 = (meal.value as SuccessResult).data.strIngredient5,
+            strIngredient6 = (meal.value as SuccessResult).data.strIngredient6,
+            strIngredient7 = (meal.value as SuccessResult).data.strIngredient7,
+            strIngredient8 = (meal.value as SuccessResult).data.strIngredient8,
+            strIngredient9 = (meal.value as SuccessResult).data.strIngredient9,
+            strIngredient10 = (meal.value as SuccessResult).data.strIngredient10,
+            strIngredient11 = (meal.value as SuccessResult).data.strIngredient11,
+            strIngredient12 = (meal.value as SuccessResult).data.strIngredient12,
+            strIngredient13 = (meal.value as SuccessResult).data.strIngredient13,
+            strIngredient14 = (meal.value as SuccessResult).data.strIngredient14,
+            strIngredient15 = (meal.value as SuccessResult).data.strIngredient15,
+            strIngredient16 = (meal.value as SuccessResult).data.strIngredient16,
+            strIngredient17 = (meal.value as SuccessResult).data.strIngredient17,
+            strIngredient18 = (meal.value as SuccessResult).data.strIngredient18,
+            strIngredient19 = (meal.value as SuccessResult).data.strIngredient19,
+            strIngredient20 = (meal.value as SuccessResult).data.strIngredient20,
+            strCategory = (meal.value as SuccessResult).data.strCategory,
+            strMeal = (meal.value as SuccessResult).data.strMeal,
+            strInstructions = (meal.value as SuccessResult).data.strInstructions,
+            strMealThumb = (meal.value as SuccessResult).data.strMealThumb,
+            strMeasure1 = (meal.value as SuccessResult).data.strMeasure1,
+            strMeasure2 = (meal.value as SuccessResult).data.strMeasure2,
+            strMeasure3 = (meal.value as SuccessResult).data.strMeasure3,
+            strMeasure4 = (meal.value as SuccessResult).data.strMeasure4,
+            strMeasure5 = (meal.value as SuccessResult).data.strMeasure5,
+            strMeasure6 = (meal.value as SuccessResult).data.strMeasure6,
+            strMeasure7 = (meal.value as SuccessResult).data.strMeasure7,
+            strMeasure8 = (meal.value as SuccessResult).data.strMeasure8,
+            strMeasure9 = (meal.value as SuccessResult).data.strMeasure9,
+            strMeasure10 = (meal.value as SuccessResult).data.strMeasure10,
+            strMeasure11 =(meal.value as SuccessResult).data.strMeasure11,
+            strMeasure12 = (meal.value as SuccessResult).data.strMeasure12,
+            strMeasure13 = (meal.value as SuccessResult).data.strMeasure13,
+            strMeasure14 = (meal.value as SuccessResult).data.strMeasure14,
+            strMeasure15 = (meal.value as SuccessResult).data.strMeasure15,
+            strMeasure16 = (meal.value as SuccessResult).data.strMeasure16,
+            strMeasure17 = (meal.value as SuccessResult).data.strMeasure17,
+            strMeasure18 = (meal.value as SuccessResult).data.strMeasure18,
+            strMeasure19 = (meal.value as SuccessResult).data.strMeasure19,
+            strMeasure20 = (meal.value as SuccessResult).data.strMeasure20
         )
         viewModelScope.launch {
             insertFavoriteMealEntityUseCase.execute(recipeEntity)

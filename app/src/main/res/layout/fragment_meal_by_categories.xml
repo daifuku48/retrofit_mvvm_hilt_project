@@ -73,4 +73,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
+    <include layout="@layout/layout_result_of_operation"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

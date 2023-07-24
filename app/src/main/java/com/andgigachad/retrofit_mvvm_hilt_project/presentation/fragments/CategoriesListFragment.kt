@@ -53,9 +53,11 @@ class CategoriesListFragment() : BaseFragment() {
             {
                 binding?.progressBar?.visibility = View.GONE
                 binding?.categoriesRecyclerView?.visibility = View.VISIBLE
+            } else {
+                binding?.progressBar?.visibility = View.VISIBLE
+                binding?.categoriesRecyclerView?.visibility = View.GONE
             }
         }
-
 
         val resultBinding = LayoutResultOfOperationBinding.bind(binding?.root!!)
         //init recyclerView
@@ -75,6 +77,7 @@ class CategoriesListFragment() : BaseFragment() {
                     }
                     binding?.categoriesRecyclerView?.adapter = adapter
                     binding?.appBarLayout?.visibility = View.VISIBLE
+                    binding?.categoriesRecyclerView?.visibility = View.VISIBLE
                 },
                 onError = {
                     resultBinding.buttonErrorRestart.visibility = View.VISIBLE
@@ -82,6 +85,11 @@ class CategoriesListFragment() : BaseFragment() {
                 }
             )
         }
+
+        resultBinding.buttonErrorRestart?.setOnClickListener {
+            vm.restartQuery()
+        }
+
         val menuProvider = object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu, menu)
@@ -103,10 +111,6 @@ class CategoriesListFragment() : BaseFragment() {
 
         binding?.toolbar?.addMenuProvider(menuProvider)
 
-    }
-
-    override fun onStart() {
-        super.onStart()
     }
 
     override fun onDestroyView() {
