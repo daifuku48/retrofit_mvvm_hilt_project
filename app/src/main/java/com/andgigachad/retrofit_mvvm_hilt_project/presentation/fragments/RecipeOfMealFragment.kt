@@ -10,6 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentRecipeOfMealBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.LayoutResultOfOperationBinding
+import com.andgigachad.retrofit_mvvm_hilt_project.network.model.DetailMealNetwork
+import com.andgigachad.retrofit_mvvm_hilt_project.network.model.DetailMealsNetwork
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.base.BaseFragment
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.MainSharedViewModel
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.viewmodels.RecipeOfMealViewModel
@@ -52,15 +54,7 @@ class RecipeOfMealFragment : BaseFragment() {
                 root = binding?.root!!,
                 result = result,
                 onSuccess = { meal ->
-                    _binding?.mealImage?.let {
-                        Glide.with(requireContext())
-                            .load(meal.strMealThumb)
-                            .skipMemoryCache(true)
-                            .centerCrop()
-                            .into(it)
-                    }
-                    _binding?.textInstructions?.text = meal.strInstructions
-                    _binding?.mealIngredientsAndMeasure?.text = vm.textIngredientsAndMeasure
+                    setMeal(meal)
                 },
                 onError = {
                     resultBinding.buttonErrorRestart.visibility = View.VISIBLE
@@ -89,6 +83,27 @@ class RecipeOfMealFragment : BaseFragment() {
         }
     }
 
+
+    private fun setMeal(meal: DetailMealNetwork){
+        binding?.mealImage?.let {
+            Glide.with(requireContext())
+                .load(meal.strMealThumb)
+                .skipMemoryCache(true)
+                .centerCrop()
+                .into(it)
+        }
+        binding?.mealName?.visibility = View.VISIBLE
+        binding?.goBackButton?.visibility = View.VISIBLE
+        binding?.mealImage?.visibility = View.VISIBLE
+        binding?.addFavoritesButton?.visibility = View.VISIBLE
+        binding?.scrollView?.visibility = View.VISIBLE
+        binding?.mealIngredientsAndMeasure?.visibility = View.VISIBLE
+        binding?.textIngredient?.visibility = View.VISIBLE
+        binding?.textInstructions?.visibility = View.VISIBLE
+        binding?.textInstructions?.text = meal.strInstructions
+        binding?.mealName?.text = meal.strMeal
+        binding?.mealIngredientsAndMeasure?.text = vm.textIngredientsAndMeasure
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

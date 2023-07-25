@@ -86,15 +86,24 @@ class MealsByCategoriesFragment : BaseFragment() {
                 onSuccess = { items ->
                     val adapter = RecyclerMealsAdapter(items)
                     binding?.mealsRecyclerView?.adapter = adapter
-                    adapter.onItemClick = {mealNetwork ->
+                    adapter.onItemClick = { mealNetwork ->
                         val action = MealsByCategoriesFragmentDirections.actionMealsByCategoriesFragmentToRecipeOfMealFragment()
                         sharedVM.setMealName(mealNetwork.strMeal)
                         navController.navigate(action)
                     }
+                    binding?.mealsRecyclerView?.visibility = View.VISIBLE
+                    binding?.appBarLayout?.visibility = View.VISIBLE
+                    binding?.scrollView?.visibility = View.VISIBLE
                 },
                 onError = {
+                    binding?.errorLayout?.visibility = View.VISIBLE
                     resultBinding.buttonErrorRestart.visibility = View.VISIBLE
                     resultBinding.textError.visibility = View.VISIBLE
+                    resultBinding.buttonErrorRestart.setOnClickListener {
+                        sharedVM.getCategoryImage().value?.let {
+                                category -> vm.fetchData(category = category)
+                        }
+                    }
                 }
             )
         }

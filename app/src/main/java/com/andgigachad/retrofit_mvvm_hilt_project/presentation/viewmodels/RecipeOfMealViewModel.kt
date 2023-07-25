@@ -34,17 +34,17 @@ class RecipeOfMealViewModel @Inject constructor(
     fun fetchData(meal: String) {
         viewModelScope.launch {
             delay(1000L)
-            try{
+            try {
                 val result = SuccessResult(getDetailMealUseCase.execute(meal).meals[0])
                 _meal.postValue(result)
+                setTextIngredientsAndMeasure(result.data)
                 loading.value = true
-            } catch (e: UnknownHostException){
+            } catch (e: UnknownHostException) {
                 val errorResult = ErrorResult<DetailMealNetwork>(Exception("IllegalAccessError"))
                 _meal.postValue(errorResult)
             }
         }
     }
-
 
     fun insertRecipeToFavorite(){
         val recipeEntity = RecipeEntity(

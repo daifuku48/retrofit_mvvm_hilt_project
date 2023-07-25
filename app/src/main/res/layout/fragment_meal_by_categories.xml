@@ -55,15 +55,16 @@
         android:textSize="20sp"/>
 
     <androidx.core.widget.NestedScrollView
+        android:id = "@+id/scrollView"
         android:layout_width="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:visibility="visible"
-                android:id="@+id/mealsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mealsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
 
     </androidx.core.widget.NestedScrollView>
 
@@ -72,6 +73,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id = "@+id/error_layout"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+        <include layout="@layout/layout_result_of_operation" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <include layout="@layout/layout_result_of_operation"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

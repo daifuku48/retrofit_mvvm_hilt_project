@@ -8,6 +8,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.FragmentFavoritesMealsBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.databinding.LayoutResultOfOperationBinding
 import com.andgigachad.retrofit_mvvm_hilt_project.presentation.components.adapters.RecyclerFavoriteMealsAdapter
@@ -69,6 +70,10 @@ class FavoritesMealsFragment : BaseFragment() {
                             sharedVM.set(recipe)
                             findNavController().navigate(action)
                         }
+
+                        binding?.favoritesRecyclerView?.visibility = View.VISIBLE
+                        binding?.toolbar?.visibility = View.VISIBLE
+                        binding?.toolbar?.title = getString(R.string.favorite_meals)
                     }
                 },
                 onError = {
