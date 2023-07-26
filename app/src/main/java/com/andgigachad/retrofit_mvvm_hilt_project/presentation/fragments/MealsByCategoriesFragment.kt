@@ -100,8 +100,8 @@ class MealsByCategoriesFragment : BaseFragment() {
                     resultBinding.buttonErrorRestart.visibility = View.VISIBLE
                     resultBinding.textError.visibility = View.VISIBLE
                     resultBinding.buttonErrorRestart.setOnClickListener {
-                        sharedVM.getCategoryImage().value?.let {
-                                category -> vm.fetchData(category = category)
+                        if (sharedVM.getCategoryName().value != null){
+                            vm.fetchData(sharedVM.getCategoryName().value!!)
                         }
                     }
                 }

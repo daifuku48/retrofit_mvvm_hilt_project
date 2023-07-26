@@ -48,7 +48,11 @@ class RecipeOfMealFragment : BaseFragment() {
         }
 
         val resultBinding = LayoutResultOfOperationBinding.bind(binding?.root!!)
-
+        resultBinding.buttonErrorRestart.setOnClickListener {
+            if (sharedVM.getMealName().value != null){
+                vm.fetchData(sharedVM.getMealName().value!!)
+            }
+        }
         vm.meal.observe(viewLifecycleOwner){  result ->
             renderResult(
                 root = binding?.root!!,
@@ -57,6 +61,8 @@ class RecipeOfMealFragment : BaseFragment() {
                     setMeal(meal)
                 },
                 onError = {
+                    binding?.errorLayout?.visibility = View.VISIBLE
+                    binding?.scrollView?.visibility = View.GONE
                     resultBinding.buttonErrorRestart.visibility = View.VISIBLE
                     resultBinding.textError.visibility = View.VISIBLE
                 }
@@ -92,6 +98,7 @@ class RecipeOfMealFragment : BaseFragment() {
                 .centerCrop()
                 .into(it)
         }
+        binding?.scrollView?.visibility = View.VISIBLE
         binding?.mealName?.visibility = View.VISIBLE
         binding?.goBackButton?.visibility = View.VISIBLE
         binding?.mealImage?.visibility = View.VISIBLE

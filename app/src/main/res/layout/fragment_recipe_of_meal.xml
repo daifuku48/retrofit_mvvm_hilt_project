@@ -125,9 +125,13 @@
                 app:layout_constraintTop_toBottomOf="@id/go_back_button"
                 android:layout_height="30dp"
                 />
-
-            <include layout="@layout/layout_result_of_operation"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <include layout="@layout/layout_result_of_operation"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

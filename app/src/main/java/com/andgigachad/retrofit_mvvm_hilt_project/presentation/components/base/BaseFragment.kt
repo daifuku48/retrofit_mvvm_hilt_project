@@ -4,17 +4,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.ErrorResult
+import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.Event
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.SuccessResult
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.Result
-abstract class BaseFragment : Fragment() {
-    /**
-     * Call this method when activity controls (e.g. toolbar) should be re-rendered
-     */
-    fun notifyScreenUpdates() {
-        (requireActivity() as FragmentsHolder).notifyScreenUpdates()
-    }
 
+
+typealias LiveResult<T> = LiveData<Result<T>>
+typealias MutableLiveResult<T> = MutableLiveData<Result<T>>
+
+
+abstract class BaseFragment : Fragment() {
     /**
      * Hide all views in the [root] and then call one of the provided lambda functions
      * depending on [result]:
