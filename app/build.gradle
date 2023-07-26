@@ -41,6 +41,10 @@ android {
     buildFeatures{
         viewBinding true
     }
+
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
 }
 
 dependencies {
@@ -48,6 +52,10 @@ dependencies {
     //hilt
     implementation 'com.google.dagger:hilt-android:2.46.1'
     kapt 'com.google.dagger:hilt-compiler:2.46.1'
+    // For Robolectric Hilt tests.
+    testImplementation("com.google.dagger:hilt-android-testing:2.46.1")
+    // ...with Kotlin.
+    kaptTest("com.google.dagger:hilt-android-compiler:2.46.1")
 
     // For instrumentation tests
     androidTestImplementation  'com.google.dagger:hilt-android-testing:2.46.1'
@@ -90,4 +98,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation "com.android.support.test:rules:1.0.2"
 }
