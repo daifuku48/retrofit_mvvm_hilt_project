@@ -18,7 +18,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavoritesMealsViewModel @Inject constructor(
-    private val checkInternetConnectionUseCase: CheckInternetConnectionUseCase,
     private val getAllMealsRecipeEntityUseCase: GetAllMealsRecipeEntityUseCase,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
