@@ -1,5 +1,7 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.domain.use_cases
 
+import androidx.lifecycle.LiveData
+import androidx.paging.PagingData
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.model.CategoriesDomain
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.repository.FavoriteMealRepository
 import com.andgigachad.retrofit_mvvm_hilt_project.network.mappers.CategoriesMapper

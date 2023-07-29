@@ -23,7 +23,7 @@ class RecyclerFavoriteMealsAdapter(private val dataSet : List<RecipeEntity>) :
             mealsImage = itemView.findViewById(R.id.recipeImage)
             mealsName = itemView.findViewById(R.id.recipeName)
             itemView.setOnClickListener {
-                onItemClick?.invoke(dataSet[adapterPosition])
+                onItemClick?.invoke(dataSet[absoluteAdapterPosition])
             }
         }
     }

@@ -17,9 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Retrofit_mvvm_hilt_project"
         tools:targetApi="31">
-        <uses-library android:name="androidx.test.runner" />
-        <uses-library android:name="androidx.test.espresso" />
-        <uses-library android:name="androidx.test.ext.junit.runners.AndroidJUnit4" />
 
         <activity
             android:name=".presentation.activities.MainActivity"

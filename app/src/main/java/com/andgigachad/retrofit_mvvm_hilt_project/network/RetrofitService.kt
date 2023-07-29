@@ -1,8 +1,10 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.network
 
+import androidx.annotation.NonNull
 import com.andgigachad.retrofit_mvvm_hilt_project.network.model.CategoriesNetwork
 import com.andgigachad.retrofit_mvvm_hilt_project.network.model.DetailMealsNetwork
 import com.andgigachad.retrofit_mvvm_hilt_project.network.model.MealsNetwork
+import com.google.gson.annotations.SerializedName
 import retrofit2.http.GET
 import retrofit2.http.Query
 

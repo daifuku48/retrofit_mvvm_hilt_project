@@ -8,43 +8,46 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.andgigachad.retrofit_mvvm_hilt_project.R
 import com.andgigachad.retrofit_mvvm_hilt_project.network.model.Category
+
 import com.bumptech.glide.Glide
 
-class RecyclerCategoriesAdapter(private val dataList: List<Category>) : RecyclerView.Adapter<RecyclerCategoriesAdapter.ViewHolder>()  {
+class RecyclerCategoriesAdapter(private val dataSet : List<Category>) :
+    RecyclerView.Adapter<RecyclerCategoriesAdapter.ViewHolder>() {
 
     var onItemClick: ((Category) -> Unit)? = null
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var recipeImage : ImageView
-        var recipeName : TextView
-        var recipeDetail : TextView
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val categoryImage: ImageView
+        val categoryName: TextView
+        val categoryDescription : TextView
         init{
-            recipeImage = itemView.findViewById(R.id.recipeImage)
-            recipeName = itemView.findViewById(R.id.recipeName)
-            recipeDetail = itemView.findViewById(R.id.recipeDetail)
+            categoryImage = itemView.findViewById(R.id.recipeImage)
+            categoryName = itemView.findViewById(R.id.recipeName)
+            categoryDescription = itemView.findViewById(R.id.recipeDetail)
             itemView.setOnClickListener {
-                onItemClick?.invoke(dataList[adapterPosition])
+                onItemClick?.invoke(dataSet[absoluteAdapterPosition])
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerCategoriesAdapter.ViewHolder {
+        val viewHolder = LayoutInflater.from(parent.context)
             .inflate(R.layout.categories_item, parent, false)
-
-        return ViewHolder(view)
+        return ViewHolder(viewHolder)
     }
-
-    override fun getItemCount() = dataList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
-            .load(dataList[position]
+            .load(dataSet[position]
                 .strCategoryThumb)
             .skipMemoryCache(true)
-            .into(holder.recipeImage)
-        holder.recipeName.text = dataList[position].strCategory
-        holder.recipeDetail.text = dataList[position].strCategoryDescription
+            .circleCrop()
+            .into(holder.categoryImage)
+
+        holder.categoryName.text = dataSet[position].strCategory
+        holder.categoryDescription.text = dataSet[position].strCategoryDescription
     }
+
+    override fun getItemCount() = dataSet.size
 
 }
