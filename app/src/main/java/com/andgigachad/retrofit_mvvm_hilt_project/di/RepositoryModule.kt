@@ -1,8 +1,5 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.di
 
-import android.app.Application
-import androidx.room.Room
-import com.andgigachad.retrofit_mvvm_hilt_project.data.database.RecipeDatabase
 import com.andgigachad.retrofit_mvvm_hilt_project.data.database.daos.RecipeDAO
 import com.andgigachad.retrofit_mvvm_hilt_project.data.repository.FavoriteMealRepositoryImpl
 import com.andgigachad.retrofit_mvvm_hilt_project.domain.repository.FavoriteMealRepository

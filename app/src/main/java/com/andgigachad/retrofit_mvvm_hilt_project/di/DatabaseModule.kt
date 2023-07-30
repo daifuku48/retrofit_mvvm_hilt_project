@@ -1,15 +1,12 @@
 package com.andgigachad.retrofit_mvvm_hilt_project.di
 
-import android.app.Application
 import android.content.Context
-import androidx.core.content.contentValuesOf
 import androidx.room.Room
 import com.andgigachad.retrofit_mvvm_hilt_project.data.database.RecipeDatabase
 import com.andgigachad.retrofit_mvvm_hilt_project.data.database.daos.RecipeDAO
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
