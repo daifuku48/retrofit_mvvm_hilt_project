@@ -25,7 +25,7 @@ class RecyclerCategoriesAdapter(private val dataSet : List<Category>) :
             categoryName = itemView.findViewById(R.id.recipeName)
             categoryDescription = itemView.findViewById(R.id.recipeDetail)
             itemView.setOnClickListener {
-                onItemClick?.invoke(dataSet[absoluteAdapterPosition])
+                onItemClick?.invoke(dataSet[adapterPosition])
             }
         }
     }

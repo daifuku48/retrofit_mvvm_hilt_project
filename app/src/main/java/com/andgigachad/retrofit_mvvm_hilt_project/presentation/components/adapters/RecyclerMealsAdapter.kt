@@ -23,7 +23,7 @@ class RecyclerMealsAdapter(private val dataSet : List<MealNetwork>) :
             mealsImage = itemView.findViewById(R.id.mealsImage)
             mealsName = itemView.findViewById(R.id.mealsName)
             itemView.setOnClickListener {
-                onItemClick?.invoke(dataSet[absoluteAdapterPosition])
+                onItemClick?.invoke(dataSet[adapterPosition])
             }
         }
     }
